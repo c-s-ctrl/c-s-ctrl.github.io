@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/categories/</link>
+    <description>Recent content in Categories on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes </title>
+      <link>https://c-s-ctrl.github.io/en/categories/notes-/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/categories/notes-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Piecemeal Guide </title>
+      <link>https://c-s-ctrl.github.io/en/categories/piecemeal-guide-/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/categories/piecemeal-guide-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Odds and Ends Guide</title>
+      <link>https://c-s-ctrl.github.io/en/categories/odds-and-ends-guide/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/categories/odds-and-ends-guide/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
