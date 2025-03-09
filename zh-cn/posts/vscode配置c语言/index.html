@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  在vscode上配置C语言 · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="学习数据结构这门课需要用到C语言，可是C盘格式化的时候笔者以及将DevC&#43;&#43;以及VS studio都删除了。且后面并没有重装，这次不想再装封装好的软件，想要将C也封装到vscode，因此开始学习配置环境，这篇文章参考的主要是知乎某某文章
+关于vscode怎么安装以及汉化不再赘述，这里直接从配置开始。
+
+  配置C的编译器
+  
+    
+    链接到标题
+  
+
+
+  下载安装
+  
+    
+    链接到标题
+  
+
+在MinGW-W64的Github上下载最新版本的类似于msys2-x86_64-20250221.exe这样以-x86_64结尾的.exe文件。
+按照所有软件安装的步骤进行安装
+
+  配置工具链
+  
+    
+    链接到标题
+  
+
+参考文章中推荐的方法是直接打开紫色的 MSYS2.exe(当然，好像用其他颜色的也不影响)，然后在命令行运行命令
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+然后一路enter或者yes下载即可。但是笔者发现如果刚刚在安装的时候不是按照默认的C盘位置，这个方法会报错
+error: failed to init transaction (unable to lock database)
+error: could not lock database: Permission denied
+然后如果用sudo的话也会报错
+已在此计算机上禁用 Sudo。若要启用它，请转到 Developer Settings page“设置”应用中
+意味着不能在这里使用sudo表示管理员。
+如何解决呢？
+方法是退出终端，直接右键图标，以管理员模式打开MSYS2.exe，然后你会发现输入前面的“$”变成了“#”，这意味着直接进入了管理员模式！在这个位置再运行上面的命令就成功了。
+
+等他下载好后可暂时先退出终端
+
+  配置环境变量
+  
+    
+    链接到标题
+  
+
+方法对所有软件基本都是通用的
+打开环境变量，在用户的环境变量“Path”里面新建位置，输入~\ucrt64\bin所在位置，其中~是你刚刚MSYS2的安装路径，确认保存，退出
+
+  检测配置情况
+  
+    
+    链接到标题
+  
+
+在window的cmd中输入下面命令
+gcc --version
+g&#43;&#43; --version
+gdb --version
+如果不报错且显示了版本信息，则证明编译器配置成功了。">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="在vscode上配置C语言">
+  <meta name="twitter:description" content="学习数据结构这门课需要用到C语言，可是C盘格式化的时候笔者以及将DevC&#43;&#43;以及VS studio都删除了。且后面并没有重装，这次不想再装封装好的软件，想要将C也封装到vscode，因此开始学习配置环境，这篇文章参考的主要是知乎某某文章
+关于vscode怎么安装以及汉化不再赘述，这里直接从配置开始。
+配置C的编译器链接到标题下载安装链接到标题在MinGW-W64的Github上下载最新版本的类似于msys2-x86_64-20250221.exe这样以-x86_64结尾的.exe文件。 按照所有软件安装的步骤进行安装
+配置工具链链接到标题参考文章中推荐的方法是直接打开紫色的 MSYS2.exe(当然，好像用其他颜色的也不影响)，然后在命令行运行命令
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain 然后一路enter或者yes下载即可。但是笔者发现如果刚刚在安装的时候不是按照默认的C盘位置，这个方法会报错
+error: failed to init transaction (unable to lock database) error: could not lock database: Permission denied 然后如果用sudo的话也会报错
+已在此计算机上禁用 Sudo。若要启用它，请转到 Developer Settings page“设置”应用中 意味着不能在这里使用sudo表示管理员。 如何解决呢？ 方法是退出终端，直接右键图标，以管理员模式打开MSYS2.exe，然后你会发现输入前面的“$”变成了“#”，这意味着直接进入了管理员模式！在这个位置再运行上面的命令就成功了。
+等他下载好后可暂时先退出终端
+配置环境变量链接到标题方法对所有软件基本都是通用的 打开环境变量，在用户的环境变量“Path”里面新建位置，输入~\ucrt64\bin所在位置，其中~是你刚刚MSYS2的安装路径，确认保存，退出
+检测配置情况链接到标题在window的cmd中输入下面命令
+gcc --version g&#43;&#43; --version gdb --version 如果不报错且显示了版本信息，则证明编译器配置成功了。">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="在vscode上配置C语言">
+  <meta property="og:description" content="学习数据结构这门课需要用到C语言，可是C盘格式化的时候笔者以及将DevC&#43;&#43;以及VS studio都删除了。且后面并没有重装，这次不想再装封装好的软件，想要将C也封装到vscode，因此开始学习配置环境，这篇文章参考的主要是知乎某某文章
+关于vscode怎么安装以及汉化不再赘述，这里直接从配置开始。
+配置C的编译器链接到标题下载安装链接到标题在MinGW-W64的Github上下载最新版本的类似于msys2-x86_64-20250221.exe这样以-x86_64结尾的.exe文件。 按照所有软件安装的步骤进行安装
+配置工具链链接到标题参考文章中推荐的方法是直接打开紫色的 MSYS2.exe(当然，好像用其他颜色的也不影响)，然后在命令行运行命令
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain 然后一路enter或者yes下载即可。但是笔者发现如果刚刚在安装的时候不是按照默认的C盘位置，这个方法会报错
+error: failed to init transaction (unable to lock database) error: could not lock database: Permission denied 然后如果用sudo的话也会报错
+已在此计算机上禁用 Sudo。若要启用它，请转到 Developer Settings page“设置”应用中 意味着不能在这里使用sudo表示管理员。 如何解决呢？ 方法是退出终端，直接右键图标，以管理员模式打开MSYS2.exe，然后你会发现输入前面的“$”变成了“#”，这意味着直接进入了管理员模式！在这个位置再运行上面的命令就成功了。
+等他下载好后可暂时先退出终端
+配置环境变量链接到标题方法对所有软件基本都是通用的 打开环境变量，在用户的环境变量“Path”里面新建位置，输入~\ucrt64\bin所在位置，其中~是你刚刚MSYS2的安装路径，确认保存，退出
+检测配置情况链接到标题在window的cmd中输入下面命令
+gcc --version g&#43;&#43; --version gdb --version 如果不报错且显示了版本信息，则证明编译器配置成功了。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-27T00:00:00+00:00">
+    <meta property="article:tag" content="软件配置">
+    <meta property="article:tag" content="C">
+    <meta property="article:tag" content="Vscode">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%BB%A5%E5%8F%8A%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E5%88%B0%E6%A0%91%E8%8E%93%E6%B4%BE/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%9A%84conda/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+              在vscode上配置C语言
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-27T00:00:00Z">
+                February 27, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E9%9B%B6%E7%A2%8E%E6%8C%87%E5%8D%97/">零碎指南</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/">软件配置</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/c/">C</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/vscode/">Vscode</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>学习数据结构这门课需要用到C语言，可是C盘格式化的时候笔者以及将DevC++以及VS studio都删除了。且后面并没有重装，这次不想再装封装好的软件，想要将C也封装到vscode，因此开始学习配置环境，这篇文章参考的主要是<a href="https://zhuanlan.zhihu.com/p/15008208441"  class="external-link" target="_blank" rel="noopener">知乎某某文章</a></p>
+<p>关于vscode怎么安装以及汉化不再赘述，这里直接从配置开始。</p>
+<h1 id="配置c的编译器">
+  配置C的编译器
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%aec%e7%9a%84%e7%bc%96%e8%af%91%e5%99%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="下载安装">
+  下载安装
+  <a class="heading-link" href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>在<a href="https://github.com/msys2/msys2-installer/releases/tag/2025-02-21"  class="external-link" target="_blank" rel="noopener">MinGW-W64的Github</a>上下载最新版本的类似于<code>msys2-x86_64-20250221.exe</code>这样以<code>-x86_64</code>结尾的<code>.exe</code>文件。
+按照所有软件安装的步骤进行安装</p>
+<h2 id="配置工具链">
+  配置工具链
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%ae%e5%b7%a5%e5%85%b7%e9%93%be">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/15008208441"  class="external-link" target="_blank" rel="noopener">参考文章</a>中推荐的方法是直接打开紫色的 <code>MSYS2.exe</code>(当然，好像用其他颜色的也不影响)，然后在命令行运行命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+</span></span></code></pre></div><p>然后一路enter或者yes下载即可。但是笔者发现如果刚刚在安装的时候不是按照默认的C盘位置，这个方法会报错</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">error: failed to init transaction <span class="o">(</span>unable to lock database<span class="o">)</span>
+</span></span><span class="line"><span class="cl">error: could not lock database: Permission denied
+</span></span></code></pre></div><p>然后如果用sudo的话也会报错</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">已在此计算机上禁用 Sudo。若要启用它，请转到 Developer Settings page“设置”应用中
+</span></span></code></pre></div><p>意味着不能在这里使用sudo表示管理员。
+如何解决呢？
+方法是退出终端，直接右键图标，以管理员模式打开<code>MSYS2.exe</code>，然后你会发现输入前面的“$”变成了“#”，这意味着直接进入了管理员模式！在这个位置再运行上面的命令就成功了。</p>
+<p><img src="/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F.png" alt="alt text"></p>
+<p>等他下载好后可暂时先退出终端</p>
+<h3 id="配置环境变量">
+  配置环境变量
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>方法对所有软件基本都是通用的
+打开环境变量，在用户的环境变量“Path”里面新建位置，输入<code>~\ucrt64\bin</code>所在位置，其中~是你刚刚MSYS2的安装路径，确认保存，退出</p>
+<h3 id="检测配置情况">
+  检测配置情况
+  <a class="heading-link" href="#%e6%a3%80%e6%b5%8b%e9%85%8d%e7%bd%ae%e6%83%85%e5%86%b5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在window的cmd中输入下面命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcc --version
+</span></span><span class="line"><span class="cl">g++ --version
+</span></span><span class="line"><span class="cl">gdb --version
+</span></span></code></pre></div><p>如果不报错且显示了版本信息，则证明编译器配置成功了。</p>
+<h2 id="在vscode中的配置">
+  在vscode中的配置
+  <a class="heading-link" href="#%e5%9c%a8vscode%e4%b8%ad%e7%9a%84%e9%85%8d%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="安装扩展">
+  安装扩展
+  <a class="heading-link" href="#%e5%ae%89%e8%a3%85%e6%89%a9%e5%b1%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在vscode中安装扩展C/C++，并选装C/C++ Extension Pack</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
