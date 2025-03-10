@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stm32 on 冰冻水的记忆</title>
+    <link>https://c-s-ctrl.github.io/zh-cn/tags/stm32/</link>
+    <description>Recent content in Stm32 on 冰冻水的记忆</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 09 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/zh-cn/tags/stm32/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在stm32上运行第一个程序</title>
+      <link>https://c-s-ctrl.github.io/zh-cn/posts/stm32/%E5%9C%A8stm32%E4%B8%8A%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sun, 09 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/zh-cn/posts/stm32/%E5%9C%A8stm32%E4%B8%8A%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/</guid>
+      <description>&lt;p&gt;下面的日志是对&lt;a href=&#34;https://www.bilibili.com/video/BV1th411z7sn/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;江协科技教程&lt;/a&gt;中自己出bug的一些补充，如果在观看视频跟随操作中出现了与笔者下面类似的一些bug，可以参考&lt;/p&gt;&#xA;&lt;h1 id=&#34;支持包安装&#34;&gt;&#xD;&#xA;  支持包安装&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e6%94%af%e6%8c%81%e5%8c%85%e5%ae%89%e8%a3%85&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;&lt;strong&gt;定位到视频[2-1]-6:14&lt;/strong&gt;：在这里笔者无法通过直接点击pack进行支持包安装，经所搜，发现是应为未开管理员运行程序导致无法写入，管理员方式运行安装支持包方式如下：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;找到安装支持包的程序：&lt;code&gt;&amp;quot;&amp;lt;你的Keil5的下载位置&amp;gt;\Keil5 MDK\UV4\PackInstaller.exe&amp;quot;&lt;/code&gt;，右键将其以管理员形式运行，&lt;/li&gt;&#xA;&lt;li&gt;然后再这里导入你想要安装的支持包(操作如下所示)&#xA;&lt;img src=&#34;inport_pack.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;&#xA;&lt;li&gt;等待右下角的进度条到100%即安装成功，然后按照视频中的检验方法(新建工程看能否选择stm32系列包)可检测是否安装成功&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;修改编码方式支持中文&#34;&gt;&#xD;&#xA;  修改编码方式支持中文&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#%e4%bf%ae%e6%94%b9%e7%bc%96%e7%a0%81%e6%96%b9%e5%bc%8f%e6%94%af%e6%8c%81%e4%b8%ad%e6%96%87&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;链接到标题&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;链接到标题&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;&lt;strong&gt;定位到视频[2-2]-12:32&lt;/strong&gt;：按确定的时候笔者报错&lt;code&gt;Access to E:\newdownloadapp\Keil5 MDK UV4\global.prop was denied&lt;/code&gt;,啊哈！还是因为没有管理员(这应该是因为笔者将keil安装在了一个要管理员权限才能编辑的文件夹里面的缘故)，用管理员运行Keil再修改即可完成。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

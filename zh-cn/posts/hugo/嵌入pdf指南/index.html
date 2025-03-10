@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  hugo博客中内嵌pdf指引 · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="笔者在hugo中内嵌pdf的探索过程，也不失为一个指南">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="hugo博客中内嵌pdf指引">
+  <meta name="twitter:description" content="笔者在hugo中内嵌pdf的探索过程，也不失为一个指南">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%B5%8C%E5%85%A5pdf%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="hugo博客中内嵌pdf指引">
+  <meta property="og:description" content="笔者在hugo中内嵌pdf的探索过程，也不失为一个指南">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Hugo功能">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/stm32/%E5%9C%A8stm32%E4%B8%8A%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%BB%A5%E5%8F%8A%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%B5%8C%E5%85%A5pdf%E6%8C%87%E5%8D%97/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/posts/hugo/%E5%B5%8C%E5%85%A5pdf%E6%8C%87%E5%8D%97/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%B5%8C%E5%85%A5pdf%E6%8C%87%E5%8D%97/">
+              hugo博客中内嵌pdf指引
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-15T00:00:00Z">
+                February 15, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E9%9B%B6%E7%A2%8E%E6%8C%87%E5%8D%97/">零碎指南</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/hugo/">Hugo</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/hugo%E5%8A%9F%E8%83%BD/">Hugo功能</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>如何还没有清楚怎么样部署网站的，请查看我另外的文章：<a href="../%e5%bb%ba%e7%ab%8b%e7%bd%91%e7%ab%99%e6%8c%87%e5%8d%97.md" >建立网站指南</a></p>
+<h1 id="已知的工具">
+  已知的工具
+  <a class="heading-link" href="#%e5%b7%b2%e7%9f%a5%e7%9a%84%e5%b7%a5%e5%85%b7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<ol>
+<li>目前官方提供的是<a href="https://github.com/anvithks/hugo-embed-pdf-shortcode"  class="external-link" target="_blank" rel="noopener">anvithks</a>与自配主题双主题的形式来内嵌pdf。</li>
+<li>不过原式开发者实现的这个功能只能展示pdf，对pdf下载等未做保护，因此另有开发者在<a href="https://cysblog.space/posts/pdfsupportdemo/"  class="external-link" target="_blank" rel="noopener">cysblog</a>进行了改进，增加了防盗功能。</li>
+</ol>
+<ul>
+<li>隐藏下载功能。</li>
+<li>隐藏文件源功能。</li>
+</ul>
+<ol start="3">
+<li>然而这位开发者在文档中未对修改过程做详细说明，因此对不熟悉Java的同志不太友好，经过chatgpt的帮助，笔者整理出了操作步骤如下(从下载官方模版开始)。</li>
+</ol>
+<h1 id="指南">
+  指南
+  <a class="heading-link" href="#%e6%8c%87%e5%8d%97">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="在网站根目录下载主题">
+  在网站根目录下载主题
+  <a class="heading-link" href="#%e5%9c%a8%e7%bd%91%e7%ab%99%e6%a0%b9%e7%9b%ae%e5%bd%95%e4%b8%8b%e8%bd%bd%e4%b8%bb%e9%a2%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add  https://github.com/anvithks/hugo-embed-pdf-shortcode.git themes/hugo-embed-pdf-shortcode
+</span></span></code></pre></div><h2 id="将主题配置内容本地化">
+  将主题配置内容本地化
+  <a class="heading-link" href="#%e5%b0%86%e4%b8%bb%e9%a2%98%e9%85%8d%e7%bd%ae%e5%86%85%e5%ae%b9%e6%9c%ac%e5%9c%b0%e5%8c%96">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<ol>
+<li>将<code>.\themes\hugo-embed-pdf-shortcode\layouts\shortcodes</code>里面的整个shortcodes文件夹放到<code>./layouts/(shortcodes)</code>里面(如果你此处已有shortcodes文件夹，那就将embed-pdf.html文件放入)。</li>
+<li>将<code>.\themes\hugo-embed-pdf-shortcode\static\js</code>的内容(pdf-js)复制到<code>/static/js/</code></li>
+<li>在<code>hugo.toml</code>中将主题那一行修改为</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;hugo-embed-pdf-shortcode&#34;</span><span class="p">,</span> <span class="s2">&#34;YourCurrentTheme&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">enableInlineShortcodes</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></div><h3 id="官方版本的基本功能">
+  官方版本的基本功能
+  <a class="heading-link" href="#%e5%ae%98%e6%96%b9%e7%89%88%e6%9c%ac%e7%9a%84%e5%9f%ba%e6%9c%ac%e5%8a%9f%e8%83%bd">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>至此，其实已经可以通过</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">\{\{<span class="p">&lt;</span> <span class="nt">embed-pdf</span> <span class="na">url</span><span class="o">=</span><span class="s">&#34;./path/to/pdf/file/example.pdf&#34;</span><span class="p">&gt;</span>\}}
+</span></span></code></pre></div><p>直接在博客中插入pdf了，官方在此基础上还给了一些<strong>隐藏分页、呈现选定的页码、隐藏加载微调器</strong>三个功能，通过下面的三个语句都可以实现(这里的反斜杠无需理会，是为了防止下面的语句被误识别为插入pdf命令而加入的)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">\{\{<span class="p">&lt;</span> <span class="nt">embed-pdf</span> <span class="na">url</span><span class="o">=</span><span class="s">&#34;./path/to/pdf/file/example.pdf&#34;</span> <span class="na">hidePaginator</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="p">&gt;</span>\}}
+</span></span><span class="line"><span class="cl">\{\{<span class="p">&lt;</span> <span class="nt">embed-pdf</span> <span class="na">url</span><span class="o">=</span><span class="s">&#34;./path/to/pdf/file/example.pdf&#34;</span> <span class="na">renderPageNum</span><span class="o">=</span><span class="s">&#34;5&#34;</span> <span class="p">&gt;</span>\}}
+</span></span><span class="line"><span class="cl">\{\{<span class="p">&lt;</span> <span class="nt">embed-pdf</span> <span class="na">url</span><span class="o">=</span><span class="s">&#34;./path/to/pdf/file/example.pdf&#34;</span> <span class="na">hideLoader</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="p">&gt;</span>\}}
+</span></span></code></pre></div><h2 id="cysbloghttpscysblogspacepostspdfsupportdemo的优化">
+  <a href="https://cysblog.space/posts/pdfsupportdemo/"  class="external-link" target="_blank" rel="noopener">cysblog</a>的优化
+  <a class="heading-link" href="#cysbloghttpscysblogspacepostspdfsupportdemo%e7%9a%84%e4%bc%98%e5%8c%96">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>这个优化好像有一个bug，以至于后面所有含pdf引用的博客都要使用如下的文件夹形式</p>
+<ul>
+<li>post
+<ul>
+<li>……(其他博客)</li>
+<li>&lt;要插入pdf的博客标题&gt;
+<ul>
+<li>index.md</li>
+<li>index.en.md(可有可无，只是用于插入英文版)</li>
+<li>&lt;你要插入的pdf文件<code>.pdf</code>&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>并且这个md名称必须是index！</p>
+<h3 id="查看按钮优化">
+  查看按钮优化
+  <a class="heading-link" href="#%e6%9f%a5%e7%9c%8b%e6%8c%89%e9%92%ae%e4%bc%98%e5%8c%96">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">···</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span><span class="w">
+</span></span></span></code></pre></div><p>中随便一个位置插入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//PDF NAVIGATION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">.</span><span class="na">pdf</span><span class="o">-</span><span class="n">paginator</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span><span class="n">center</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="隐藏下载">
+  隐藏下载
+  <a class="heading-link" href="#%e9%9a%90%e8%97%8f%e4%b8%8b%e8%bd%bd">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>请直接比较embed-pdf.html文件内容与下面内容的异同，通过 /* 省略已有样式 */前后内容在embed-pdf.html中进行检索，自己添加隐藏下载按钮块与pdf源链接控制代码块即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{- if not ($.Page.Scratch.Get &#34;embed-pdf-count&#34;) -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span> <span class="s">&#39;/js/pdf-js/build/pdf.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* 省略已有样式 */</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/*隐藏下载按钮请加入下面一段*/</span>
+</span></span><span class="line"><span class="cl">    <span class="p">#</span><span class="nn">overlayText</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">display</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- end -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> /* 省略已有样式 */
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    (function(){
+</span></span><span class="line"><span class="cl">    var url = &#39;{{ .Get &#34;url&#34; }}&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    var hidePaginator = &#34;{{ .Get &#34;hidePaginator&#34; }}&#34; === &#34;true&#34;;
+</span></span><span class="line"><span class="cl">    var hideLoader = &#34;{{ .Get &#34;hideLoader&#34; }}&#34; === &#34;true&#34;;
+</span></span><span class="line"><span class="cl">    var selectedPageNum = parseInt(&#34;{{ .Get &#34;renderPageNum&#34; }}&#34;) || 1;
+</span></span><span class="line"><span class="cl">/*************pdf源链接显示控制代码块(需要手动添加的部分)**************/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    var showSource = &#34;{{ .Get &#34;showSource&#34; }}&#34; === &#34;true&#34;;
+</span></span><span class="line"><span class="cl">    var pageSource = document.getElementById(&#34;pdf-source-{{ substr (.Get &#34;url&#34; | md5) 0 8 }}&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    // 控制源链接的显示
+</span></span><span class="line"><span class="cl">    function showSourcef() {
+</span></span><span class="line"><span class="cl">        if(showSource) {
+</span></span><span class="line"><span class="cl">            pageSource.style.display = &#39;inline&#39;;
+</span></span><span class="line"><span class="cl">        } else {
+</span></span><span class="line"><span class="cl">            pageSource.style.display = &#39;none&#39;;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    // 调用 showSourcef() 来决定是否显示 pdf-source 链接
+</span></span><span class="line"><span class="cl">    showSourcef();
+</span></span><span class="line"><span class="cl">/*************pdf源链接显示控制代码块结束**************/
+</span></span><span class="line"><span class="cl">  /* 省略已有样式 */   
+</span></span></code></pre></div><h2 id="试试插入一个pdf">
+  试试插入一个pdf
+  <a class="heading-link" href="#%e8%af%95%e8%af%95%e6%8f%92%e5%85%a5%e4%b8%80%e4%b8%aapdf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>下面是一个示例
+<script type="text/javascript" src= '/js/pdf-js/build/pdf.js'></script>
+
+<style>
+  #embed-pdf-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 20vh;
+     
+  }
+  
+  .pdf-canvas {
+    border: 1px solid black;
+    direction: ltr;
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  #the-canvas {
+    border: 1px solid black;
+    direction: ltr;
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  
+  .pdf-loadingWrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+  }
+  
+  .pdf-loading {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #d2d0d0;;
+    border-radius: 50%;
+    border-top-color: #383838;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+  }
+  
+  
+  
+  
+  
+  #overlayText {
+    word-wrap: break-word;
+    display: grid;
+    justify-content: end;
+  }
+  
+  #overlayText a {
+    position: relative;
+    top: 10px;
+    right: 4px;
+    color: #000;
+    margin: auto;
+    background-color: #eeeeee;
+    padding: 0.3em 1em;
+    border: solid 2px;
+    border-radius: 12px;
+    border-color: #00000030;
+    text-decoration: none;
+  }
+  
+#overlayText {
+display: none;
+}
+
+  #overlayText svg {
+    height: clamp(1em, 2vw, 1.4em);
+    width:  clamp(1em, 2vw, 1.4em);
+  }
+  
+  .pdf-paginator {
+    text-align:center;
+
+  
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  </style><div class="embed-pdf-container" id="embed-pdf-container-25db34f4">
+    <div class="pdf-loadingWrapper" id="pdf-loadingWrapper-25db34f4">
+        <div class="pdf-loading" id="pdf-loading-25db34f4"></div>
+    </div>
+    <div id="overlayText">
+      <a href="D.pdf" aria-label="Download" download>
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+            <path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z" />
+        </svg>
+      </a>
+    </div>
+    <canvas class="pdf-canvas" id="pdf-canvas-25db34f4"></canvas>
+</div>
+
+<div class="pdf-paginator" id="pdf-paginator-25db34f4">
+    <button id="pdf-prev-25db34f4">Previous</button>
+    <button id="pdf-next-25db34f4">Next</button> &nbsp; &nbsp;
+    <span>
+      <span class="pdf-pagenum" id="pdf-pagenum-25db34f4"></span> / <span class="pdf-pagecount" id="pdf-pagecount-25db34f4"></span>
+    </span>
+    <a class="pdf-source" id="pdf-source-25db34f4" href="D.pdf">[pdf]</a>
+</div>
+
+<noscript>
+View the PDF file <a class="pdf-source" id="pdf-source-noscript-25db34f4" href="D.pdf">here</a>.
+</noscript>
+
+<script type="text/javascript">
+    (function(){
+    var url = 'D.pdf';
+
+    var hidePaginator = "" === "true";
+    var hideLoader = "" === "true";
+    var selectedPageNum = parseInt("") || 1;
+
+    
+    var showSource = "" === "true";
+    var pageSource = document.getElementById("pdf-source-25db34f4");
+
+    
+    function showSourcef() {
+        if(showSource) {
+            pageSource.style.display = 'inline';
+        } else {
+            pageSource.style.display = 'none';
+        }
+    }
+
+    
+    showSourcef();
+    
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+    
+    if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https:\/\/c-s-ctrl.github.io\/" + 'js/pdf-js/build/pdf.worker.js';
+
+    
+    var pdfDoc = null,
+        pageNum = selectedPageNum,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 3,
+        canvas = document.getElementById('pdf-canvas-25db34f4'),
+        ctx = canvas.getContext('2d'),
+        paginator = document.getElementById("pdf-paginator-25db34f4"),
+        loadingWrapper = document.getElementById('pdf-loadingWrapper-25db34f4');
+
+
+    
+    showPaginator();
+    showLoader();
+
+    
+
+    function renderPage(num) {
+      pageRendering = true;
+      
+      pdfDoc.getPage(num).then(function(page) {
+        var viewport = page.getViewport({scale: scale});
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
+        var renderTask = page.render(renderContext);
+
+        
+        renderTask.promise.then(function() {
+          pageRendering = false;
+          showContent();
+
+          if (pageNumPending !== null) {
+            
+            renderPage(pageNumPending);
+            pageNumPending = null;
+          }
+        });
+      });
+
+      
+      document.getElementById('pdf-pagenum-25db34f4').textContent = num;
+    }
+
+    
+
+    function showContent() {
+      loadingWrapper.style.display = 'none';
+      canvas.style.display = 'block';
+    }
+
+    
+
+    function showLoader() {
+      if(hideLoader) return
+      loadingWrapper.style.display = 'flex';
+      canvas.style.display = 'none';
+    }
+
+    
+
+    function showPaginator() {
+      if(hidePaginator) return
+      paginator.style.display = 'block';
+    }
+
+    
+
+    function queueRenderPage(num) {
+      if (pageRendering) {
+        pageNumPending = num;
+      } else {
+        renderPage(num);
+      }
+    }
+
+    
+
+    function onPrevPage() {
+      if (pageNum <= 1) {
+        return;
+      }
+      pageNum--;
+      queueRenderPage(pageNum);
+    }
+    document.getElementById('pdf-prev-25db34f4').addEventListener('click', onPrevPage);
+
+    
+
+    function onNextPage() {
+      if (pageNum >= pdfDoc.numPages) {
+        return;
+      }
+      pageNum++;
+      queueRenderPage(pageNum);
+    }
+    document.getElementById('pdf-next-25db34f4').addEventListener('click', onNextPage);
+
+    
+
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+      pdfDoc = pdfDoc_;
+      var numPages = pdfDoc.numPages;
+      document.getElementById('pdf-pagecount-25db34f4').textContent = numPages;
+
+      
+      if(pageNum > numPages) {
+        pageNum = numPages
+      }
+
+      
+      renderPage(pageNum);
+    });
+    })();
+</script>
+</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

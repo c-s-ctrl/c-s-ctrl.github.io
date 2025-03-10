@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo Website Building  on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/hugo-website-building-/</link>
+    <description>Recent content in Hugo Website Building  on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/hugo-website-building-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Website construction and localization of Coder template</title>
+      <link>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;h1 id=&#34;basic-configuration&#34;&gt;&#xD;&#xA;  Basic configuration&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#basic-configuration&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;configure-the-environment&#34;&gt;&#xD;&#xA;  Configure the environment&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#configure-the-environment&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;First, we need to download Hugo and configure the relevant environment variables. Specific steps you can refer to [this article] (&lt;a href=&#34;https://zhuanlan.zhihu.com/p/440175312%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://zhuanlan.zhihu.com/p/440175312)&lt;/a&gt;. When you are done, make sure that no errors are reported when you run &amp;lsquo;hugo version&amp;rsquo; in the terminal.&lt;/p&gt;&#xA;&lt;h3 id=&#34;configure-the-theme&#34;&gt;&#xD;&#xA;  Configure the theme&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#configure-the-theme&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;Then according to clew to create your own folder, I chose the theme [Hugo - coder] (&lt;a href=&#34;https://github.com/luizdepra/hugo-coder%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/luizdepra/hugo-coder)&lt;/a&gt;. However, there were some problems in grasping the warehouse. An error was reported when running the warehouse crawl command. After asking the AI, I learned that the local warehouse needs to be initialized first. To do this, we need to run:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

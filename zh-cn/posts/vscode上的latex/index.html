@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  vscode&#43;latex&#43;ai · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="vscode&#43;latex">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="vscode&#43;latex&#43;ai">
+  <meta name="twitter:description" content="vscode&#43;latex">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="vscode&#43;latex&#43;ai">
+  <meta property="og:description" content="vscode&#43;latex">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-01T00:00:00+00:00">
+    <meta property="article:tag" content="Latex">
+    <meta property="article:tag" content="Vscode">
+    <meta property="article:tag" content="软件配置">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/stm32/%E5%9C%A8stm32%E4%B8%8A%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%BB%A5%E5%8F%8A%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+              vscode&#43;latex&#43;ai
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-03-01T00:00:00Z">
+                March 1, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E9%9B%B6%E7%A2%8E%E6%8C%87%E5%8D%97/">零碎指南</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/latex/">Latex</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/vscode/">Vscode</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/">软件配置</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>本文想说的不仅仅是vscode配置$\LaTeX$这么简单，经过两年写$\LaTeX$的积累，我发现“熟练掌握$\LaTeX$”并不只是能熟记一些常用的代码，更重要的是善于利用好各种相关的软件、插件、网站，从而使自己的书写排版效率更高。
+然而工具也不是越多越好，如果一个工具能实现多种功能，那其实额外装一个差不多软件是多余的，我始终认为,在实现功能差不多的情况下选择插件优于使用网站，最次的就是下载一个额外的软件。
+下面我想说的就是一些如何让编写$\LaTeX$更高效的工具。</p>
+<h1 id="vscode">
+  vscode
+  <a class="heading-link" href="#vscode">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="配置latex">
+  配置$\LaTeX$
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%aelatex">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>关于如何下载vscode、$\LaTeX$发行版，不在赘述，上知乎或csdn都能找到对应的教程。
+这里说说如何配置$\LaTeX$。</p>
+<h3 id="latex本身没有问题">
+  $\LaTeX$本身没有问题
+  <a class="heading-link" href="#latex%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e9%97%ae%e9%a2%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在配置之前，必须确定$\LaTeX$是否已经下载成功，方法可以打开其自带的轻量级编辑器TexWork，看看运行一个简单的tex文件能否成功。</p>
+<h3 id="vscode上安装对应插件">
+  vscode上安装对应插件
+  <a class="heading-link" href="#vscode%e4%b8%8a%e5%ae%89%e8%a3%85%e5%af%b9%e5%ba%94%e6%8f%92%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>只需要安装LaTeX Workshop这个插件，其他有关插件自选(亲测只需这个插件后面即可成功运行)，也可之后有时间再装。</p>
+<h3 id="填写配置文件">
+  填写配置文件
+  <a class="heading-link" href="#%e5%a1%ab%e5%86%99%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在vscode上端搜索<code>&gt;打开用户设置</code>,选择弹出这里的第一个，打开<code>settings.json</code>文件。
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/JSON.jpg" alt="alt text">
+如果你之前用vscode配置过其他语言，那么应该也会主动或被动地更改过(即在选择中后台自动在文件中加入了内容)这个文件，请保留你之前的内容无需删除，另外加上下面的代码，如果你的vscode是崭新下载的，那么你可放心删去这个文件中所有东西，直接放入下面的代码，保存，退出。(最后一段关于python的代码读者无需复制，那是笔者配python时留下的)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;latex-workshop.latex.tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;%DOC%&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;%DOC%&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;%DOCFILE%&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;latex-workshop.latex.recipes&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex -&gt; bibtex -&gt; pdflatex*2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//下面的就是笔者曾经配置过python所留下的，因此不删除
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="c1">// // // // // // // // // // // //
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;python.defaultInterpreterPath&#34;</span><span class="o">:</span> <span class="s2">&#34;E:\\newdownloadapp\\anaconda\\python.exe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="c1">// // // // // // // // // // // // // //
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>关于这个配置文件的一些细节，在<a href="##%e4%b8%aa%e6%80%a7%e5%8c%96%e6%9b%b4%e6%94%b9%e9%85%8d%e7%bd%ae" >个性化更改配置</a>部分会说，但请读者还是跟着指南顺序，先成功实现编译再做个性化调整</p>
+<h3 id="编译文章与双向检索">
+  编译文章与双向检索
+  <a class="heading-link" href="#%e7%bc%96%e8%af%91%e6%96%87%e7%ab%a0%e4%b8%8e%e5%8f%8c%e5%90%91%e6%a3%80%e7%b4%a2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h3 id="编译文章与查看">
+  编译文章与查看
+  <a class="heading-link" href="#%e7%bc%96%e8%af%91%e6%96%87%e7%ab%a0%e4%b8%8e%e6%9f%a5%e7%9c%8b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>此时请打开一篇能正确编译的tex文件，点击右上角的绿色按钮开始编译，此时左下角会转圈，待其变成√时编译成功，按右上角按钮(或者其快捷键ctrl+Alt+V)(见图)查看pdf，其他内容请看图。
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/pdf.png" alt="alt text">
+如果报错了，点击报错提示，有详细报告查看(这比TeXwork友好)，</p>
+<h3 id="正反检索">
+  正反检索
+  <a class="heading-link" href="#%e6%ad%a3%e5%8f%8d%e6%a3%80%e7%b4%a2">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>在tex部分<code>ctrl+Alt+J</code>是正向检索</li>
+<li>在pdf部分<code>ctrl+鼠标右键点击pdf任意位置</code>是反向检索</li>
+</ul>
+<p>至此，这部分就结束了。</p>
+<h2 id="个性化更改配置">
+  个性化更改配置
+  <a class="heading-link" href="#%e4%b8%aa%e6%80%a7%e5%8c%96%e6%9b%b4%e6%94%b9%e9%85%8d%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>在此之前请确保vscode编写$\LaTeX$已成功实现，</p>
+<h3 id="快捷键调整">
+  快捷键调整
+  <a class="heading-link" href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e8%b0%83%e6%95%b4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>左下部分设置，选<code>键盘快捷方式</code>，即可设置，</li>
+<li>这里我最关心的是$\LaTeX$编译的快捷键。因此搜索<code>LaTeX Workshop: 构建 LaTeX 项目(latex-workshop.build)</code>,设置自己想要的即可(因为默认的是crtl+alt+……这样的复合件，不太方便，我将其改成了ctrl+……的形式)，</li>
+<li>调整的时候要注意快捷键冲突，可以将一些不常用的命令快捷键设置成冲突，从而给常用快捷键更多的选择。</li>
+</ul>
+<h3 id="调整编译顺序">
+  调整编译顺序
+  <a class="heading-link" href="#%e8%b0%83%e6%95%b4%e7%bc%96%e8%af%91%e9%a1%ba%e5%ba%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>所谓的编译顺序，也就是按下绿色小三角(或者刚刚你设置的快捷键)之后vscode优先选用的编译方式，决定他的是配置JSON中各个部分的先后位置，比如我的配置文件是xelatex的配置放在pdflatex配置上面的，这也就意味着绿色小三角绑定的是xe$\LaTeX$编译器，我这段时间编写中文文档居多，因此选用这种方式，当然，我也可以选左边TEX后，在手动点击其他的编译方式
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/%E4%BE%A7%E6%A0%8F.jpg" alt="alt text">。
+顺便一说没这个侧栏的符号片段对于$\LaTeX$初学者相当友好，可以靠点击使用希腊字母、数学符号，慢慢地就能对$\LaTeX$有更熟悉的感觉了(我也是这样子过来的)。</p>
+<h2 id="插件">
+  插件
+  <a class="heading-link" href="#%e6%8f%92%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>前面说过，我认为插件是最优的，那么我们就介绍一下vscode自带的插件、功能。</p>
+<h3 id="pdf浏览器">
+  pdf浏览器
+  <a class="heading-link" href="#pdf%e6%b5%8f%e8%a7%88%e5%99%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>哈哈哈，其实正反向检索以及pdf浏览本身就是一个很好用的功能插件，根本无需下载什么额外的pdf浏览器(部分vscode配置$\LaTeX$的教程都说需下载，实际上根本不需要！)</p>
+<h3 id="侧栏">
+  侧栏
+  <a class="heading-link" href="#%e4%be%a7%e6%a0%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>刚刚也已经提到过了，包括数学符号与tikz，非常有利于初学者学习语法，而至于tikz，笔者一般不用这个(之后会介绍网站)</p>
+<h3 id="公式预览器">
+  公式预览器
+  <a class="heading-link" href="#%e5%85%ac%e5%bc%8f%e9%a2%84%e8%a7%88%e5%99%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>实际上就是一个无需编译的实时公式预览器，适用于对$\LaTeX$语法已有相当的熟练度，但是对语法的想象能力不强的使用者(我也是)，可以实时查看公式的最终形态，从而方便修改与debug。</p>
+<p>使用方法是在上方搜索<code>&gt;LaTex Workshop: 打开数学预览面板</code>,打开，即可用，效果如下
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/%E5%85%AC%E5%BC%8F%E9%9D%A2%E6%9D%BF.png" alt="alt text"></p>
+<h3 id="ai">
+  AI
+  <a class="heading-link" href="#ai">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>这是一个相当强大的功能！是2025年新出的，即coplit与vscode的结合，从而可以对代码进行智能化的补全(不仅仅只是查找意义上的自动填充)。</li>
+<li>用在$\LaTeX$上，即相当于一个写文章的ai助手，可以省去很多诸如打矩阵、书写定理，讲套话的一些重复劳动，当然，在没有ai嵌入之前也是可以将代码给网页版的ai优化的，不过肯定是没有coplit这么方便了。</li>
+<li>使用方法是下载插件GitHub Copilot</li>
+</ul>
+<h2 id="网站">
+  网站
+  <a class="heading-link" href="#%e7%bd%91%e7%ab%99">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="画图tikz">
+  画图(tikz)
+  <a class="heading-link" href="#%e7%94%bb%e5%9b%betikz">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><a href="https://tikzmaker.com/editor"  class="external-link" target="_blank" rel="noopener">https://tikzmaker.com/editor</a>,这个网站可以解决大部分的电路作图以及流程图的绘制，
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/tikz.png" alt="alt text"></p>
+<h3 id="表格制作">
+  表格制作
+  <a class="heading-link" href="#%e8%a1%a8%e6%a0%bc%e5%88%b6%e4%bd%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p><a href="https://www.latex-tables.com/"  class="external-link" target="_blank" rel="noopener">https://www.latex-tables.com/</a>,可以将本地的表格导入或者直接在上面手搓</p>
+<ul>
+<li>这个表格的优点是能识别合并单元格等内容。</li>
+<li>缺点是线上操作不方便，所以建议还是先在excel做好再导入，
+当然，也有其他的网站，比如<a href="https://www.tablesgenerator.com/"  class="external-link" target="_blank" rel="noopener">https://www.tablesgenerator.com/</a></li>
+</ul>
+<h3 id="公式编辑">
+  公式编辑
+  <a class="heading-link" href="#%e5%85%ac%e5%bc%8f%e7%bc%96%e8%be%91">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>实际上对于熟手来说用vscode的插件完全是够了的，但是这里还是推荐一个适合新手入门的在线可视化手搓公式网站</p>
+<ul>
+<li><a href="https://www.latexlive.com/##"  class="external-link" target="_blank" rel="noopener">https://www.latexlive.com/##</a></li>
+</ul>
+<h2 id="软件">
+  软件
+  <a class="heading-link" href="#%e8%bd%af%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="excel2latex表格转换器">
+  Excel2latex表格转换器
+  <a class="heading-link" href="#excel2latex%e8%a1%a8%e6%a0%bc%e8%bd%ac%e6%8d%a2%e5%99%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="配置">
+  配置
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<ul>
+<li>可以在<a href="https://www.ctan.org/tex-archive/support/excel2latex/"  class="external-link" target="_blank" rel="noopener">官网</a>下载Excel2latex这个插件(<code>.xla</code>文件)，使用方法是将下载内容双击打开一下，一路确认，然后随便查看一个excel文件，应该就能看到<code>加载项</code>,点击，里面的两个按钮就是转换按钮了，</li>
+<li>可能再双击转换按钮时会说“已禁用宏”，这是因为<code>Excel2latex.xla</code>文件的位置不被信任的原因。解决方法是打开Excel的“信任中心设置”，在受信任位置中添加 <code>Excel2latex.xla</code>所在的路径即可，<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/%E4%BF%A1%E4%BB%BB.png" alt="alt text"></li>
+</ul>
+<h4 id="使用">
+  使用
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>如下，不适用于合并单元格的情况，但是对于单格情况效果很好，适用于批量的数据表格转$\LaTeX$。
+<img src="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/excel2latex.png" alt="alt text"></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

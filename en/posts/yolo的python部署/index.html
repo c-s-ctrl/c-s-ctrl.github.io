@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Local training and testing for yolov8 · Dison
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dison">
+<meta name="description" content="How I built my own website and personalized coder templates">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Local training and testing for yolov8">
+  <meta name="twitter:description" content="How I built my own website and personalized coder templates">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">
+  <meta property="og:site_name" content="Dison">
+  <meta property="og:title" content="Local training and testing for yolov8">
+  <meta property="og:description" content="How I built my own website and personalized coder templates">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-19T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content=" Record ">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/hugo/%E5%B0%86%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E5%88%B0github%E6%8C%87%E5%8D%97/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/hugo/%E5%B5%8C%E5%85%A5pdf%E6%8C%87%E5%8D%97/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/en/">
+      Dison
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/zh-cn/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">
+              Local training and testing for yolov8
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-19T00:00:00Z">
+                February 19, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/en/authors/dison/">Dison</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/en/categories/piecemeal-guide-/">Piecemeal Guide </a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/en/tags/hugo/">Hugo</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/en/tags/-record-/"> Record </a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>This is the author last semester a big creation of an initial preparation work, feel very fun, share the operation process.</p>
+<h1 id="ultralytics-package-installation">
+  ultralytics package installation
+  <a class="heading-link" href="#ultralytics-package-installation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Yolo currently has already progressed to v11 version, which commonly used v8 and v11 is developed by [ultralytics] (<a href="https://docs.ultralytics.com/%29"  class="external-link" target="_blank" rel="noopener">https://docs.ultralytics.com/)</a>, so if you want to deploy yolo algorithm is the most convenient download ultralytics package.</p>
+<h2 id="pre-preparation">
+  Pre-preparation
+  <a class="heading-link" href="#pre-preparation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Before complete the following steps, please download good [anaconda] (<a href="https://blog.csdn.net/qq_46569815/article/details/120424395%29"  class="external-link" target="_blank" rel="noopener">https://blog.csdn.net/qq_46569815/article/details/120424395)</a>!</p>
+<h2 id="new-environment">
+  New environment
+  <a class="heading-link" href="#new-environment">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Why create a new environment? In a word, if yolo deployment fails or is broken, and you don&rsquo;t know how to deal with it, you can simply delete the environment and create a new one, that is, quarantine it.
+Run the following command to activate the environment and create a new environment.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n myenv <span class="c1"># Create an environment</span>
+</span></span><span class="line"><span class="cl">conda activate myenv <span class="c1"># Activates the environment</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">You should <span class="k">then</span> see the name myenv at the front of the <span class="nb">command</span> line.
+</span></span><span class="line"><span class="cl"><span class="c1">## Install the ultralytics package</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>Magic environment may be required<span class="o">)</span> Run commands directly
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>bash
+</span></span><span class="line"><span class="cl">pip install ultralytics
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">This step is quite long, you need to be patient, <span class="nb">wait</span> <span class="k">until</span> the end of the <span class="nb">command</span> line prompt will naturally pop up, <span class="k">do</span> not interrupt in the middle!
+</span></span><span class="line"><span class="cl"><span class="c1">## Check whether the installation is successful</span>
+</span></span><span class="line"><span class="cl">Type Python, and <span class="k">then</span> enter it in the &gt; <span class="nb">command</span> line
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>bash
+</span></span><span class="line"><span class="cl">from ultralytics import YOLO
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">If no error is reported, the installation is successful. If it fails, the best thing to <span class="k">do</span> is <span class="nb">exit</span> the environment <span class="o">(</span><span class="s1">&#39; conda deactivate &#39;</span><span class="o">)</span>, delete the environment <span class="o">(</span><span class="s1">&#39; conda env remove -n myenv &#39;</span><span class="o">)</span>, and start all over again.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Training process</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Download data</span>
+</span></span><span class="line"><span class="cl">A <span class="nb">complete</span> training site is currently <span class="o">[</span>kaggle<span class="o">]</span> <span class="o">(</span>https://www.kaggle.com/search<span class="o">)</span>, need to find the data are generally in the form of below
+</span></span><span class="line"><span class="cl">, also can be used directly <span class="k">if</span> too lazy to find the following <span class="o">[</span>helmet series<span class="o">]</span> <span class="o">(</span>https://www.kaggle.com/code/ammarnassanalhajali/nfl-training-and-inference-yolov5<span class="o">)</span> data sets.
+</span></span><span class="line"><span class="cl"><span class="c1">## Understand the data set</span>
+</span></span><span class="line"><span class="cl">The downloaded data typically contains the following three folders
+</span></span><span class="line"><span class="cl">- train
+</span></span><span class="line"><span class="cl">- val
+</span></span><span class="line"><span class="cl">- <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">They are used <span class="k">for</span> testing, verification and detection, some lightweight packets may only have train data, val and <span class="nb">test</span> data sets are empty, <span class="k">do</span> not panic, this data can also be trained.
+</span></span><span class="line"><span class="cl">There may be complicated folders in different data sets, but we only need to identify image and label. image stores pictures, <span class="k">while</span> label stores txt files with the same file name as the pictures in image, but they identify the coordinates of objects. Each item has one line. With five numbers <span class="o">(</span>or maybe one <span class="k">if</span> there<span class="s1">&#39;s only one row),
+</span></span></span><span class="line"><span class="cl"><span class="s1">- The first number is the serial number (equivalent to stating what kind of object it is),
+</span></span></span><span class="line"><span class="cl"><span class="s1">- The remaining four numbers are the two-dimensional coordinates of the two points constituting the rectangle of the identification box.
+</span></span></span><span class="line"><span class="cl"><span class="s1">## Configure the yaml file
+</span></span></span><span class="line"><span class="cl"><span class="s1">```yaml
+</span></span></span><span class="line"><span class="cl"><span class="s1">train: D:\YOLO11test\css-data\train\images\
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">val: D:\YOLO11test\css-data\valid\images\
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">test: D:\YOLO11test\css-data\test\images\
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">nc: 10
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">names: [Hardhat,Mask,No-Hardhat, No-Mask, No-Safety Vest, Person, Safety Cone, Safety Vest,machinery,vehicle]
+</span></span></span><span class="line"><span class="cl"><span class="s1">` ` `
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">- This file is equivalent to a guide to the training file, train, val, test respectively correspond to the position of the horizontal and vertical data set corresponding to the picture, it is strongly recommended to fill in the absolute position, the relative position may be because the default environment in the C disk bug, can not find the data.
+</span></span></span><span class="line"><span class="cl"><span class="s1">- &#39;</span><span class="nv">nc</span><span class="o">=</span>10<span class="s1">&#39; indicates that there are ten things to be identified
+</span></span></span><span class="line"><span class="cl"><span class="s1">- &#39;</span>names: <span class="o">[</span>···<span class="o">]</span><span class="s1">&#39; stands for the names given to each of the ten things separately. Note that this needs to be self-checked against the first number of each line in the label (that is, the serial number), do not confuse.
+</span></span></span><span class="line"><span class="cl"><span class="s1">How do I select a python environment in vscode
+</span></span></span><span class="line"><span class="cl"><span class="s1">First of all, you need to have a python plugin on vscode (yes, the plugin is called python),
+</span></span></span><span class="line"><span class="cl"><span class="s1">Open a &#39;</span>.py <span class="s1">&#39;file and proceed as follows:
+</span></span></span><span class="line"><span class="cl"><span class="s1">- Click the version number next to python in the bottom right corner.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">! [](/images/post/yolo python deployment/bottom-right.png)
+</span></span></span><span class="line"><span class="cl"><span class="s1">- Select a compilation environment in the box that pops up above, you can browse manually if you don&#39;</span>t have one
+</span></span><span class="line"><span class="cl">! <span class="o">[](</span>/images/post/yolo python deployment/pop.png<span class="o">)</span>
+</span></span><span class="line"><span class="cl">- If there is no successful configuration of the comrades <span class="k">do</span> not worry, choose to run in the terminal, the method is to click the drop-down icon of the upper right triangle to <span class="k">select</span>, you can jump out of the terminal, familiar with the <span class="nb">command</span> line partner is very familiar with. Select the corresponding environment <span class="s1">&#39;python.exe&#39;</span> to run it
+</span></span><span class="line"><span class="cl">! <span class="o">[](</span>/images/post/yolo python deployment/right top.jpg<span class="o">)</span>! <span class="o">[](</span>/images/post/yolo python deployment/command line.png<span class="o">)</span>
+</span></span><span class="line"><span class="cl">For those who are not familiar with the <span class="nb">command</span> line, remember that Ctrl+C is a forced <span class="nb">exit</span> command, and use it when something happens!
+</span></span><span class="line"><span class="cl"><span class="c1">## Training code</span>
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>python
+</span></span><span class="line"><span class="cl">from ultralytics import YOLO
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load a model</span>
+</span></span><span class="line"><span class="cl"><span class="nv">model</span> <span class="o">=</span> YOLO<span class="o">(</span><span class="s2">&#34;D:/YOLO11test/Models/yolov8n.pt&#34;</span><span class="o">)</span>  <span class="c1"># pretrained YOLO11n model</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">model.train<span class="o">(</span><span class="nv">data</span><span class="o">=</span><span class="s2">&#34;D:/YOLO11test/safehat.yaml&#34;</span>,epochs<span class="o">=</span>20<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">model.val<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">- including <span class="sb">`</span> yolov8n. Pt <span class="sb">`</span> file from/ultralytics website <span class="o">(</span>https://docs.ultralytics.com/<span class="o">)</span> download the preliminary training, choose according to need, and the location of the absolute path here is also given.
+</span></span><span class="line"><span class="cl">- Here <span class="s1">&#39;safeht.yaml&#39;</span> is the yaml file we just configured.
+</span></span><span class="line"><span class="cl">-epochs is the number of training rounds, <span class="k">if</span> you just want to play around with it, make it smaller, or find a smaller data <span class="nb">set</span> up front.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Because of The next is a very long training process!
+</span></span><span class="line"><span class="cl"><span class="c1"># Use the training results to reason</span>
+</span></span><span class="line"><span class="cl">After the end of the training, the terminal will pop up a sign of training success, and tell where the trained model is <span class="o">(</span>generally somewhere in the folder of the python environment you create<span class="o">)</span>, follow the guidelines to find the weight file <span class="s1">&#39;best-pt&#39;</span>, and finally copy it to a familiar location, and <span class="k">then</span> write the following code:
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>python
+</span></span><span class="line"><span class="cl">from ultralytics import YOLO
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load a model</span>
+</span></span><span class="line"><span class="cl"><span class="nv">model</span> <span class="o">=</span> YOLO<span class="o">(</span><span class="s2">&#34;D:/YOLO11test/best.pt&#34;</span><span class="o">)</span>  <span class="c1"># pretrained YOLO11n model</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">model.predict<span class="o">(</span><span class="s2">&#34;D:/YOLO11test/1.mp4&#34;</span>,save<span class="o">=</span>True,line_width<span class="o">=</span>2<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">The position of <span class="s1">&#39;best.pt&#39;</span> is the position of your <span class="s1">&#39;best.pt&#39;</span>, and <span class="s1">&#39;1.mp4&#39;</span> is the video <span class="o">(</span>can also be a picture<span class="o">)</span> that you will use to train, and <span class="k">then</span> the moment to witness the miracle appears!
+</span></span><span class="line"><span class="cl">Run, the model will cut your video frame by frame, and train it frame by frame. After the training, you can get the video with the inference result <span class="o">(</span>its storage location will also be displayed in the terminal after the end of the operation<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="c1"># Reference tutorial</span>
+</span></span><span class="line"><span class="cl">- https://blog.csdn.net/haojiyaha/article/details/143028516#comments_35126027
+</span></span><span class="line"><span class="cl">-  https://www.bilibili.com/video/BV1Sw411v7nR/?spm_id_from<span class="o">=</span>333.337.search-card.all.click<span class="p">&amp;</span><span class="nv">vd_source</span><span class="o">=</span>eca564ad7b44345c8105eeb b08f088c6
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     Dison 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

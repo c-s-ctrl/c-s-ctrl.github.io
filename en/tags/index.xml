@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/</link>
+    <description>Recent content in Tags on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> Record </title>
+      <link>https://c-s-ctrl.github.io/en/tags/-record-/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/-record-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://c-s-ctrl.github.io/en/tags/hugo/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Github</title>
+      <link>https://c-s-ctrl.github.io/en/tags/github/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Record</title>
+      <link>https://c-s-ctrl.github.io/en/tags/record/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/record/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo Template </title>
+      <link>https://c-s-ctrl.github.io/en/tags/hugo-template-/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/hugo-template-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo Website Building </title>
+      <link>https://c-s-ctrl.github.io/en/tags/hugo-website-building-/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/hugo-website-building-/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PDF Embedding</title>
+      <link>https://c-s-ctrl.github.io/en/tags/pdf-embedding/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/tags/pdf-embedding/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
