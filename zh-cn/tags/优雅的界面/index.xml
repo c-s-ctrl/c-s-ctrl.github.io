@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>优雅的界面 on 冰冻水的记忆</title>
+    <link>https://c-s-ctrl.github.io/zh-cn/tags/%E4%BC%98%E9%9B%85%E7%9A%84%E7%95%8C%E9%9D%A2/</link>
+    <description>Recent content in 优雅的界面 on 冰冻水的记忆</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/zh-cn/tags/%E4%BC%98%E9%9B%85%E7%9A%84%E7%95%8C%E9%9D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图标空白</title>
+      <link>https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/</link>
+      <pubDate>Wed, 12 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;昨天发现大部分应用的图标都变成了这样子&lt;img src=&#34;https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/%E7%A9%BA%E7%99%BD%E5%9B%BE%E6%A0%87.png&#34; alt=&#34;alt text&#34;&gt;，虽然不影响使用，但是很难受，之前也遇到过，但是总是在几次重启之后解决了，这次决定主动出击解决这个bug。&lt;a href=&#34;https://blog.csdn.net/Good_Starry/article/details/143009989&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;查阅网上资料&lt;/a&gt;,发现清理缓存即可，方法如下：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在任务管理器中搜索资源管理器，&lt;/li&gt;&#xA;&lt;li&gt;右键重新启动即可&#xA;&lt;img src=&#34;https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/%E6%93%8D%E4%BD%9C.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

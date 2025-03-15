@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  计算机组成原理 · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="笔者部署本地blog到github上的过程">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="计算机组成原理">
+  <meta name="twitter:description" content="笔者部署本地blog到github上的过程">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="计算机组成原理">
+  <meta property="og:description" content="笔者部署本地blog到github上的过程">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-26T00:00:00+00:00">
+    <meta property="article:tag" content="计算机">
+    <meta property="article:tag" content="微机原理">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/github%E7%9A%84%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E9%A2%86coplit-pro/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/stm32/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+              计算机组成原理
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-26T00:00:00Z">
+                February 26, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/">微机原理</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86/">微机原理</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="计算机的层次结构">
+  计算机的层次结构
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e5%b1%82%e6%ac%a1%e7%bb%93%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="软硬件实现">
+  软硬件实现
+  <a class="heading-link" href="#%e8%bd%af%e7%a1%ac%e4%bb%b6%e5%ae%9e%e7%8e%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h2 id="语言功能">
+  语言功能
+  <a class="heading-link" href="#%e8%af%ad%e8%a8%80%e5%8a%9f%e8%83%bd">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h1 id="计算机体系结构-组成与实现">
+  计算机体系结构、 组成与实现
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84-%e7%bb%84%e6%88%90%e4%b8%8e%e5%ae%9e%e7%8e%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="计算机体系结构">
+  计算机体系结构
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>也就是所谓的指令，比如x86、arm</p>
+<h2 id="计算机组成">
+  计算机组成
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>偏重于物理机器的逻辑设计……
+也包括怎么样选择，比如乘法指令是用专门的乘法器实现，还是经加法器用重复相加以及移位操作实现，这个选择的过程就是不同的计算机组成了。</p>
+<h2 id="计算机实现">
+  计算机实现
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%ae%9e%e7%8e%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>更加底层的物理，比如集成电路的设计。</p>
+<h1 id="计算机的体系结构">
+  计算机的体系结构
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="冯诺依曼计算机体系结构">
+  冯诺依曼计算机体系结构
+  <a class="heading-link" href="#%e5%86%af%e8%af%ba%e4%be%9d%e6%9b%bc%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="分类">
+  分类
+  <a class="heading-link" href="#%e5%88%86%e7%b1%bb">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="第一代">
+  第一代
+  <a class="heading-link" href="#%e7%ac%ac%e4%b8%80%e4%bb%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>用十进制，靠插线进行，程序不储存，需要手动执行，也就谈不上体系结构了。</p>
+<h4 id="第二代">
+  第二代
+  <a class="heading-link" href="#%e7%ac%ac%e4%ba%8c%e4%bb%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>二进制，有储存程序，是线代计算机体系结构的基础</p>
+<h3 id="组成部分">
+  组成部分
+  <a class="heading-link" href="#%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>五大部分
+<ul>
+<li>运算器</li>
+<li>控制器</li>
+<li>存储器</li>
+<li>输入设备</li>
+<li>输出设备</li>
+</ul>
+</li>
+<li>以存储器为中心</li>
+</ul>
+<h3 id="信息表示二进制">
+  信息表示:二进制
+  <a class="heading-link" href="#%e4%bf%a1%e6%81%af%e8%a1%a8%e7%a4%ba%e4%ba%8c%e8%bf%9b%e5%88%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>并且储存在同一类存储器中</p>
+<h3 id="工作原理储存程序和指令驱动">
+  工作原理：储存程序和指令驱动
+  <a class="heading-link" href="#%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86%e5%82%a8%e5%ad%98%e7%a8%8b%e5%ba%8f%e5%92%8c%e6%8c%87%e4%bb%a4%e9%a9%b1%e5%8a%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ol>
+<li>编译链接形成的可执行程序(包括<strong>指令</strong>和数据，储存在输入设备中)</li>
+<li>程序开始运行前，需要加载到存储器</li>
+<li>控制器在<strong>不需要人工干预</strong>的情况下自动一次从存储器中取出指令并加以分析、执行</li>
+</ol>
+<h3 id="c语言设计的计算机部件">
+  C语言设计的计算机部件
+  <a class="heading-link" href="#c%e8%af%ad%e8%a8%80%e8%ae%be%e8%ae%a1%e7%9a%84%e8%ae%a1%e7%ae%97%e6%9c%ba%e9%83%a8%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>相当于一个理解</p>
+<ul>
+<li>输入设备(<code>scanf</code>函数)</li>
+<li>输出设备(<code>printf</code>函数)</li>
+<li>运算器(c=a+b)</li>
+<li>存储器(存储a,b,c这些量)</li>
+</ul>
+<h3 id="基本架构">
+  基本架构
+  <a class="heading-link" href="#%e5%9f%ba%e6%9c%ac%e6%9e%b6%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>(可以看那个经典的流程图)
+并且注意下面三个点</p>
+<ol>
+<li>计算机以存储器为中心</li>
+<li>实线表示数据线，虚线表示控制信息(指令)</li>
+<li>无总线！仅通过芯片链接，运算器与存储器就相当于是CPU了</li>
+</ol>
+<h2 id="总线模型机体系结构">
+  总线模型机体系结构
+  <a class="heading-link" href="#%e6%80%bb%e7%ba%bf%e6%a8%a1%e5%9e%8b%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="分类-1">
+  分类
+  <a class="heading-link" href="#%e5%88%86%e7%b1%bb-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="总线子系统其实也就是总线">
+  总线子系统(其实也就是总线)
+  <a class="heading-link" href="#%e6%80%bb%e7%ba%bf%e5%ad%90%e7%b3%bb%e7%bb%9f%e5%85%b6%e5%ae%9e%e4%b9%9f%e5%b0%b1%e6%98%af%e6%80%bb%e7%ba%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>链接下面子系统的公共通道。分为下面几种</p>
+<ul>
+<li>地址总线(由CPU单向发出)</li>
+<li>控制总线</li>
+<li>数据总线</li>
+</ul>
+<h4 id="cpu子系统">
+  CPU子系统
+  <a class="heading-link" href="#cpu%e5%ad%90%e7%b3%bb%e7%bb%9f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>是在CPU内部的，传输速度很快，但是存储空间很小</p>
+<ul>
+<li><strong>运算器</strong>：完成基本逻辑UN算</li>
+<li><strong>控制器</strong>：取指令、分析指令、执行指令</li>
+<li><strong>寄存器阵列(组)</strong>:包括
+<ul>
+<li>通用寄存器、</li>
+<li><strong>程序计数器(PC)</strong>:存储下一条要执行的指令的地址,也就是所谓的计数。</li>
+<li><strong>堆栈指针SP</strong></li>
+</ul>
+</li>
+<li><strong>地址和数据缓冲器</strong>:</li>
+</ul>
+<h4 id="存储器子系统">
+  存储器子系统
+  <a class="heading-link" href="#%e5%ad%98%e5%82%a8%e5%99%a8%e5%ad%90%e7%b3%bb%e7%bb%9f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>与总线相呼应，控制电路发送“读或写”操作，地址发送地址数据，表示数据要去哪里，而数据就是数据。</p>
+<h4 id="输入输出子系统">
+  输入输出子系统
+  <a class="heading-link" href="#%e8%be%93%e5%85%a5%e8%be%93%e5%87%ba%e5%ad%90%e7%b3%bb%e7%bb%9f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<h3 id="模型机指令系统">
+  模型机指令系统
+  <a class="heading-link" href="#%e6%a8%a1%e5%9e%8b%e6%9c%ba%e6%8c%87%e4%bb%a4%e7%b3%bb%e7%bb%9f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>指令包含操作码和操作数两部分，比如对于复制命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp file1.txt /home/user/documents/
+</span></span></code></pre></div><p>中<code>cp</code>就是操作码，后面的两个文件地址就是操作数。</p>
+<p>同时，<em>操作数还可以有不同方式给出</em>，比如</p>
+<ul>
+<li>像上面那样直接给出</li>
+<li>调用计算机中已经储存的变量</li>
+<li>类似于指针，即给地址，让地址指向地址</li>
+<li>指针的指针……的指针的指针…………(反复套娃)</li>
+</ul>
+<h3 id="模型机工作过程">
+  模型机工作过程
+  <a class="heading-link" href="#%e6%a8%a1%e5%9e%8b%e6%9c%ba%e5%b7%a5%e4%bd%9c%e8%bf%87%e7%a8%8b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>取指令(以及数据)</li>
+<li>分析指令</li>
+<li>执行指令</li>
+<li>然后，再循环……</li>
+<li></li>
+</ul>
+<h2 id="计算机微处理器体系结构的改进">
+  计算机(微处理器)体系结构的改进
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%be%ae%e5%a4%84%e7%90%86%e5%99%a8%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%e7%9a%84%e6%94%b9%e8%bf%9b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="早期计算机缺点">
+  早期计算机缺点
+  <a class="heading-link" href="#%e6%97%a9%e6%9c%9f%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bc%ba%e7%82%b9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>指令功能越来越复杂，硬件成本高</li>
+<li>存储器读取速度远远低于CPU的处理速度</li>
+<li>低速和高速输入输出设备之间的矛盾</li>
+</ul>
+<h3 id="cpu指令集设计">
+  CPU指令集设计
+  <a class="heading-link" href="#cpu%e6%8c%87%e4%bb%a4%e9%9b%86%e8%ae%be%e8%ae%a1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<h4 id="cisc">
+  CISC
+  <a class="heading-link" href="#cisc">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>即complex instruction set computer,复杂指令集计算机，相当于将指令包装成硬件(软件硬化)，缺点就是随着指令越来越多越来越复杂，速度也就越来越慢</p>
+<h4 id="risc">
+  RISC
+  <a class="heading-link" href="#risc">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>reduced instruction set computer,精简指令集计算机。</p>
+<ul>
+<li>尽量减少指令的种类</li>
+<li>并尽量保证每一个指令的运行时间都大致相同(硬件软化)
+1</li>
+</ul>
+<h3 id="存储器分层子系统">
+  存储器分层子系统
+  <a class="heading-link" href="#%e5%ad%98%e5%82%a8%e5%99%a8%e5%88%86%e5%b1%82%e5%ad%90%e7%b3%bb%e7%bb%9f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>从上到下四个部分：寄存器组(CPU内)、高速缓冲存储器(cache)、主存储器(内部存储器)、辅助存储器(外部存储器)。
+越前面的速度越快，但价格也高，因此容量也小。</p>
+<h3 id="并行技术">
+  并行技术
+  <a class="heading-link" href="#%e5%b9%b6%e8%a1%8c%e6%8a%80%e6%9c%af">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>同一时间内进行多种运算或操作，包括同时性和并发性。</p>
+<h4 id="指令并行技术流水线工作方式">
+  (指令并行技术)流水线工作方式
+  <a class="heading-link" href="#%e6%8c%87%e4%bb%a4%e5%b9%b6%e8%a1%8c%e6%8a%80%e6%9c%af%e6%b5%81%e6%b0%b4%e7%ba%bf%e5%b7%a5%e4%bd%9c%e6%96%b9%e5%bc%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>参考图2-17</p>
+<h4 id="指令并行技术超标量技术">
+  (指令并行技术)超标量技术
+  <a class="heading-link" href="#%e6%8c%87%e4%bb%a4%e5%b9%b6%e8%a1%8c%e6%8a%80%e6%9c%af%e8%b6%85%e6%a0%87%e9%87%8f%e6%8a%80%e6%9c%af">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>是有多个处理器的情况下流水线工作方式的加强版。</p>
+<h4 id="其他并行技术">
+  其他并行技术
+  <a class="heading-link" href="#%e5%85%b6%e4%bb%96%e5%b9%b6%e8%a1%8c%e6%8a%80%e6%9c%af">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h4>
+<p>多级系统、多核</p>
+<h1 id="计算机性能评测">
+  计算机性能评测
+  <a class="heading-link" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e6%80%a7%e8%83%bd%e8%af%84%e6%b5%8b">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="字长">
+  字长
+  <a class="heading-link" href="#%e5%ad%97%e9%95%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>计算机一次能够处理的最大数据位数</p>
+<h2 id="访存空间">
+  访存空间
+  <a class="heading-link" href="#%e8%ae%bf%e5%ad%98%e7%a9%ba%e9%97%b4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>CPU能够直接访问的存储空间，由CPU的<strong>地址总线</strong>决定，</p>
+<h2 id="系统响应时间">
+  系统响应时间
+  <a class="heading-link" href="#%e7%b3%bb%e7%bb%9f%e5%93%8d%e5%ba%94%e6%97%b6%e9%97%b4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>包括CPU的处理时间(最快)和I/O系统(最慢)的响应时间</p>
+<h2 id="运算速度">
+  运算速度
+  <a class="heading-link" href="#%e8%bf%90%e7%ae%97%e9%80%9f%e5%ba%a6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>用MIPS(每秒百万条指令)或MFLOPS来描述</p>
+<p>$$
+MIPS=\frac{f}{CP1}
+$$
+$$
+T(s)=\frac{IC\times CP1}{f}
+$$
+其中</p>
+<ul>
+<li>f：时钟频率，CPU的基本工作频率</li>
+<li>IC：指令数目，运行程序的指令总数</li>
+<li>CPI(cycle per instruction)：指令执行的平均周期数，可从运行大量程序的数据中统计。</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

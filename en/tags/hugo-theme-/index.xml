@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo Theme  on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/hugo-theme-/</link>
+    <description>Recent content in Hugo Theme  on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/hugo-theme-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Site construction and localization of Coder template</title>
+      <link>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;p&gt;The following is the author during the process of building this website a record, including a local deployment and [coder template] (&lt;a href=&#34;https://github.com/luizdepra/hugo-coder%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/luizdepra/hugo-coder)&lt;/a&gt;, a personalized exploration&lt;/p&gt;&#xA;&lt;h1 id=&#34;prerequisites&#34;&gt;&#xD;&#xA;  Prerequisites&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#prerequisites&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;First, you must have a github account and download git locally!&#xA;Create a github account&#xA;You can refer to [this article] (&lt;a href=&#34;https://blog.csdn.net/m0_67906358/article/details/128808210%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.csdn.net/m0_67906358/article/details/128808210)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;download-git&#34;&gt;&#xD;&#xA;  Download git&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#download-git&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Reference [this article] (&lt;a href=&#34;https://blog.csdn.net/weixin_44406127/article/details/137540031%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.csdn.net/weixin_44406127/article/details/137540031)&lt;/a&gt;, download after multiple command lines can be used, but the author still tend to use the terminal to run Windows&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Piecemeal Guide  on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/categories/piecemeal-guide-/</link>
+    <description>Recent content in Piecemeal Guide  on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 10 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/categories/piecemeal-guide-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insert formula in hugo (coder topic)</title>
+      <link>https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/</guid>
+      <description>&lt;p&gt;Fusion of # MathJax and Markdown&#xA;A few days ago, the author USES Tian Shaohan personal blog (&lt;a href=&#34;https://www.shaohanyun.top/posts/env/hugo_mathjax/%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.shaohanyun.top/posts/env/hugo_mathjax/)&lt;/a&gt;, in strict accordance with the above instructions configuration, But in the coder theme his blog says&amp;rsquo; extend_head.html &amp;lsquo;is&amp;rsquo; head.html&amp;rsquo; under my coder theme, which doesn&amp;rsquo;t matter.&lt;/p&gt;&#xA;&lt;h1 id=&#34;modify-the-configuration-using-the-coder-theme&#34;&gt;&#xD;&#xA;  Modify the configuration using the coder theme&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#modify-the-configuration-using-the-coder-theme&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;I remember &lt;a href=&#34;https://hugo-coder.netlify.app/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coder&amp;rsquo;s example URL&lt;/a&gt; mentioned using KaTeX to render formulas, but never found it, so I fed its github URL to the ai, who told me, Add a line of code directly to [para] in &amp;lsquo;hugo.toml&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>vscode&#43;latex&#43;ai</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</link>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</guid>
+      <description>&lt;p&gt;What this paper wants to talk about is not only the simple configuration of $\LaTeX$in vscode. After two years&amp;rsquo; accumulation of writing $\LaTeX$, I found that &amp;ldquo;proficient in $\LaTeX$&amp;rdquo; is not only able to memorize some common codes, but more importantly, to make good use of various related software, plug-ins and websites, so as to make my writing and typesetting more efficient.&#xA;However, tools are not the more the better, if a tool can achieve a variety of functions, it is actually redundant to install an additional software, I always think that in the case of similar functions to choose a plug-in is better than the use of the website, the next is to download an additional software.&#xA;What I want to talk about below are some tools for making writing $\LaTeX$more efficient.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configure C on vscode</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</guid>
+      <description>&lt;p&gt;Learning data structure this course needs to use C language, but the C disk formatting the author and DevC++ and VS studio are removed. And behind is not heavy, packaging good software, I don&amp;rsquo;t want to take this time want to C also encapsulate vscode, so start learning configuration environment, reference of this article is mainly [zhihu so-and-so article] (&lt;a href=&#34;https://zhuanlan.zhihu.com/p/15008208441&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://zhuanlan.zhihu.com/p/15008208441&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;p&gt;How to install vscode and Chinese will not be repeated, here directly start from the configuration.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Local training and testing for yolov8</title>
+      <link>https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/</guid>
+      <description>&lt;p&gt;This is the author last semester a big creation of an initial preparation work, feel very fun, share the operation process.&lt;/p&gt;&#xA;&lt;h1 id=&#34;ultralytics-package-installation&#34;&gt;&#xD;&#xA;  ultralytics package installation&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#ultralytics-package-installation&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Yolo currently has already progressed to v11 version, which commonly used v8 and v11 is developed by [ultralytics] (&lt;a href=&#34;https://docs.ultralytics.com/%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://docs.ultralytics.com/)&lt;/a&gt;, so if you want to deploy yolo algorithm is the most convenient download ultralytics package.&lt;/p&gt;&#xA;&lt;h2 id=&#34;pre-preparation&#34;&gt;&#xD;&#xA;  Pre-preparation&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#pre-preparation&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Before complete the following steps, please download good [anaconda] (&lt;a href=&#34;https://blog.csdn.net/qq_46569815/article/details/120424395%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.csdn.net/qq_46569815/article/details/120424395)&lt;/a&gt;!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Site construction and localization of Coder template</title>
+      <link>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;p&gt;The following is the author during the process of building this website a record, including a local deployment and [coder template] (&lt;a href=&#34;https://github.com/luizdepra/hugo-coder%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/luizdepra/hugo-coder)&lt;/a&gt;, a personalized exploration&lt;/p&gt;&#xA;&lt;h1 id=&#34;prerequisites&#34;&gt;&#xD;&#xA;  Prerequisites&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#prerequisites&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;First, you must have a github account and download git locally!&#xA;Create a github account&#xA;You can refer to [this article] (&lt;a href=&#34;https://blog.csdn.net/m0_67906358/article/details/128808210%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.csdn.net/m0_67906358/article/details/128808210)&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;download-git&#34;&gt;&#xD;&#xA;  Download git&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#download-git&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Reference [this article] (&lt;a href=&#34;https://blog.csdn.net/weixin_44406127/article/details/137540031%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://blog.csdn.net/weixin_44406127/article/details/137540031)&lt;/a&gt;, download after multiple command lines can be used, but the author still tend to use the terminal to run Windows&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

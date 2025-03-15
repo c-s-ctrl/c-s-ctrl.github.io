@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo Function  on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/hugo-function-/</link>
+    <description>Recent content in Hugo Function  on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 10 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/hugo-function-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insert formula in hugo (coder topic)</title>
+      <link>https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/</guid>
+      <description>&lt;p&gt;Fusion of # MathJax and Markdown&#xA;A few days ago, the author USES Tian Shaohan personal blog (&lt;a href=&#34;https://www.shaohanyun.top/posts/env/hugo_mathjax/%29&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.shaohanyun.top/posts/env/hugo_mathjax/)&lt;/a&gt;, in strict accordance with the above instructions configuration, But in the coder theme his blog says&amp;rsquo; extend_head.html &amp;lsquo;is&amp;rsquo; head.html&amp;rsquo; under my coder theme, which doesn&amp;rsquo;t matter.&lt;/p&gt;&#xA;&lt;h1 id=&#34;modify-the-configuration-using-the-coder-theme&#34;&gt;&#xD;&#xA;  Modify the configuration using the coder theme&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#modify-the-configuration-using-the-coder-theme&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;I remember &lt;a href=&#34;https://hugo-coder.netlify.app/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coder&amp;rsquo;s example URL&lt;/a&gt; mentioned using KaTeX to render formulas, but never found it, so I fed its github URL to the ai, who told me, Add a line of code directly to [para] in &amp;lsquo;hugo.toml&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

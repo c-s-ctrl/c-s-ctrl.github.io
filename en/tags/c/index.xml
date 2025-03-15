@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/c/</link>
+    <description>Recent content in C on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure C on vscode</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</guid>
+      <description>&lt;p&gt;Learning data structure this course needs to use C language, but the C disk formatting the author and DevC++ and VS studio are removed. And behind is not heavy, packaging good software, I don&amp;rsquo;t want to take this time want to C also encapsulate vscode, so start learning configuration environment, reference of this article is mainly [zhihu so-and-so article] (&lt;a href=&#34;https://zhuanlan.zhihu.com/p/15008208441&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://zhuanlan.zhihu.com/p/15008208441&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;p&gt;How to install vscode and Chinese will not be repeated, here directly start from the configuration.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

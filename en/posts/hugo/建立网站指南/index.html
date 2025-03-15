@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Site construction and localization of Coder template · Dison
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dison">
+<meta name="description" content="How I built my own website and personalized coder templates">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Site construction and localization of Coder template">
+  <meta name="twitter:description" content="How I built my own website and personalized coder templates">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="Dison">
+  <meta property="og:title" content="Site construction and localization of Coder template">
+  <meta property="og:description" content="How I built my own website and personalized coder templates">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Hugo Theme ">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E6%A8%A1%E7%94%B5/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E7%94%B5%E7%A3%81%E5%AD%A6/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E9%AB%98%E6%95%B0%E7%AC%94%E8%AE%B0/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/en/">
+      Dison
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/zh-cn/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+              Site construction and localization of Coder template
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-15T00:00:00Z">
+                February 15, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/en/authors/-memory-of-frozen-water-/"> Memory of Frozen Water </a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/en/categories/piecemeal-guide-/">Piecemeal Guide </a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/en/tags/hugo/">Hugo</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/en/tags/hugo-theme-/">Hugo Theme </a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>The following is the author during the process of building this website a record, including a local deployment and [coder template] (<a href="https://github.com/luizdepra/hugo-coder%29"  class="external-link" target="_blank" rel="noopener">https://github.com/luizdepra/hugo-coder)</a>, a personalized exploration</p>
+<h1 id="prerequisites">
+  Prerequisites
+  <a class="heading-link" href="#prerequisites">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>First, you must have a github account and download git locally!
+Create a github account
+You can refer to [this article] (<a href="https://blog.csdn.net/m0_67906358/article/details/128808210%29"  class="external-link" target="_blank" rel="noopener">https://blog.csdn.net/m0_67906358/article/details/128808210)</a>.</p>
+<h2 id="download-git">
+  Download git
+  <a class="heading-link" href="#download-git">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Reference [this article] (<a href="https://blog.csdn.net/weixin_44406127/article/details/137540031%29"  class="external-link" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44406127/article/details/137540031)</a>, download after multiple command lines can be used, but the author still tend to use the terminal to run Windows</p>
+<h1 id="basic-configuration">
+  Basic configuration
+  <a class="heading-link" href="#basic-configuration">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="configure-the-environment">
+  Configure the environment
+  <a class="heading-link" href="#configure-the-environment">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>First, we need to download Hugo and configure the relevant environment variables. Specific steps you can refer to [this article] (<a href="https://zhuanlan.zhihu.com/p/440175312%29"  class="external-link" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/440175312)</a>. When you are done, make sure that no errors are reported when you run &lsquo;hugo version&rsquo; in the terminal.
+Suggestions here are installed the extend version of Hugo, namely/Hugo&rsquo;s official website (<a href="https://github.com/gohugoio/hugo/releases/tag/v0.144.0"  class="external-link" target="_blank" rel="noopener">https://github.com/gohugoio/hugo/releases/tag/v0.144.0</a>)</p>
+<blockquote>
+<p>hugo_extended_0. 144.0 _windows - amd64. Zip</p></blockquote>
+<p>I got stuck here yesterday and haven&rsquo;t seen the website work yet. Today (2025.2.15) it was discovered that the reason was because the extend version was not installed.</p>
+<h3 id="configure-the-theme">
+  Configure the theme
+  <a class="heading-link" href="#configure-the-theme">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Then create your own site root folder using &lsquo;hugo new site &lt; your local blog folder name &gt;&rsquo; where hugo is installed. I chose the [Hugo - coder] (<a href="https://github.com/luizdepra/hugo-coder"  class="external-link" target="_blank" rel="noopener">https://github.com/luizdepra/hugo-coder</a>) theme. However, there were some problems in grasping the warehouse. An error was reported when running the warehouse crawl command. After asking the AI, I learned that the local warehouse needs to be initialized first. To do this, we need to run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">Next, run the following <span class="nb">command</span> to grab the theme repository:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>bash
+</span></span><span class="line"><span class="cl">git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">After running the <span class="s1">&#39;git submodule add&#39;</span> command, Hugo will add the <span class="s1">&#39;hugo-coder&#39;</span> theme to your project under the <span class="s1">&#39;themes&#39;</span> folder.
+</span></span><span class="line"><span class="cl">Then run the <span class="nb">command</span>
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>bash
+</span></span><span class="line"><span class="cl">hugo server
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">You can see the results of your website. See my other tutorial on how to deploy it to githubpage.
+</span></span><span class="line"><span class="cl"><span class="c1"># Personalized template website</span>
+</span></span><span class="line"><span class="cl">Coder this template is really beautiful and I decided to explore further how to personalize it.
+</span></span><span class="line"><span class="cl">In the following process, it is recommended that everyone try the <span class="s1">&#39;hugo server&#39;</span> <span class="nb">command</span> all the way to open the <span class="nb">local</span> preview of the website, to facilitate the implementation of the change
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">First, I copy the files in the <span class="s1">&#39;exampleSite&#39;</span> directory directly into the site root, overwriting the existing files. Through these steps, we can successfully <span class="nb">complete</span> the construction of Hugo website and the localization of Coder template. Next, I will <span class="k">continue</span> to personalize the design and adjust the content of the site to suit my needs.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## Change the language</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Most of the changes are concentrated in the <span class="s1">&#39;hugo.toml&#39;</span> file, so it is recommended to install Even Better TOML plug-ins before you start, which will be easier to view and modify.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The first thing to change is the language configuration. hugo-coder templates are bilingual in Portuguese and English by default, but I want to use Chinese. The specific steps are as follows:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### Change the English name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Search <span class="k">for</span> <span class="s1">&#39;John Doe&#39;</span>, <span class="s1">&#39;Full Stack DevOps&#39;</span>, and<span class="s1">&#39; Magician &#39;</span>in<span class="s1">&#39; config.toml &#39;</span>, three lines of sample text in the template, respectively. Change them to the English name you want <span class="o">(</span>such as Dison<span class="o">)</span> and a brief introduction.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### Change the Chinese name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Also search <span class="k">for</span> <span class="s1">&#39;Joao Ninguem&#39;</span>, <span class="s1">&#39;Full Stack DevOps e&#39;</span> and <span class="s1">&#39;Magico&#39;</span> to modify them to the Chinese name and introduction. Note that <span class="s1">&#39;Full Stack DevOps e&#39;</span> and <span class="s1">&#39;Full Stack DevOps&#39;</span> in English are repeated, so this part will be overwritten when you modify it in English. You can locate directly to:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>toml
+</span></span><span class="line"><span class="cl"><span class="o">[</span>languages.zh-cn.params<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">To modify.
+</span></span><span class="line"><span class="cl"><span class="c1">### Change Chinese jump link</span>
+</span></span><span class="line"><span class="cl">Modify the Chinese jump link, that is, the top right corner about, blog,...... Such as the Chinese part and toggle button Settings, locate to
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>toml
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>languages.pt-br.menu.main<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">You can see below the Portuguese jump text Sobre Blog Projetos Contato, first you need to put all
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>toml
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>languages.pt-br.menu.main<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">Change into
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>toml
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>languages.zh-cn.menu.main<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="sb">`</span> <span class="sb">`</span> <span class="sb">`</span>
+</span></span><span class="line"><span class="cl">Then change the Portuguese to Chinese.
+</span></span><span class="line"><span class="cl">Finally, you need to add <span class="s1">&#39;[languages.zh-cn]&#39;</span>
+</span></span><span class="line"><span class="cl">Change this to <span class="s1">&#39;languageName = &#34;:cn:&#34;&#39;</span>.
+</span></span><span class="line"><span class="cl">This step is suitable <span class="k">for</span> expanding more jump links as well as languages.
+</span></span><span class="line"><span class="cl">Write relevant documents in Chinese
+</span></span><span class="line"><span class="cl">In fact, just the modification is not enough, you will find that the modified language points into the Chinese menu display 404, this is because there is no corresponding Chinese document, we enter <span class="s1">&#39;\content&#39;</span>, will find
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;about.md&#39;</span>, <span class="s1">&#39;about.pt-br.md&#39;</span> and the corresponding other documents, we need to add the <span class="s1">&#39;about.zh-cn.md&#39;</span> document to give the jump target! For the <span class="s1">&#39;.pt-br.md &#39;</span>suffix of the document can be deleted or not deleted, but may occasionally pop out some Portuguese links.
+</span></span><span class="line"><span class="cl"><span class="c1">## Change your avatar</span>
+</span></span><span class="line"><span class="cl">Finally, you can also change your avatar through avatarURL <span class="o">(</span>in fact, we even change the website logo, but this part has not been explored yet<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="c1">## Modify the default language directly</span>
+</span></span><span class="line"><span class="cl">In fact, you can directly change the priority display language, you can change the preferred language from English to Chinese. At this time, note that <span class="k">if</span> you want to write English articles, you need to add suffixes, <span class="k">for</span> example, <span class="k">if</span> the file name of an article is<span class="s1">&#39; bulid.md &#39;</span>, <span class="k">then</span> he will automatically put it in the Chinese display blog, at this <span class="nb">time</span> <span class="k">if</span> you want to have its translation in the English blog. Need to create a <span class="s1">&#39;bulid.en.md&#39;</span>, and fill in the English version of this article, this process needs to be completed manually, although there are many unchanged, but there is stronger flexibility, <span class="k">for</span> example, you can <span class="nb">let</span> the Chinese and English blog display different content or even completely different articles.
+</span></span><span class="line"><span class="cl"><span class="c1">### Writing</span>
+</span></span><span class="line"><span class="cl">Basically, <span class="k">if</span> you are familiar with markdown grammar, you can <span class="k">do</span> some basic writing!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># More Features</span>
+</span></span><span class="line"><span class="cl">1. For information on how to deploy a blog to github, see the article: <span class="o">[</span>Guide to Deploying a Website to github<span class="o">](</span>./ Guide to Deploying a Website to github.md<span class="o">)</span>
+</span></span><span class="line"><span class="cl">2. For details on how to adjust pdf embedding Settings, see the article: <span class="o">[</span>Embedding pdf Guide<span class="o">](</span>./ Embedding pdf Guide /index.md<span class="o">)</span>
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     Dison 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

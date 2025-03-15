@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vscode on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/vscode/</link>
+    <description>Recent content in Vscode on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vscode&#43;latex&#43;ai</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</link>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</guid>
+      <description>&lt;p&gt;What this paper wants to talk about is not only the simple configuration of $\LaTeX$in vscode. After two years&amp;rsquo; accumulation of writing $\LaTeX$, I found that &amp;ldquo;proficient in $\LaTeX$&amp;rdquo; is not only able to memorize some common codes, but more importantly, to make good use of various related software, plug-ins and websites, so as to make my writing and typesetting more efficient.&#xA;However, tools are not the more the better, if a tool can achieve a variety of functions, it is actually redundant to install an additional software, I always think that in the case of similar functions to choose a plug-in is better than the use of the website, the next is to download an additional software.&#xA;What I want to talk about below are some tools for making writing $\LaTeX$more efficient.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configure C on vscode</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/</guid>
+      <description>&lt;p&gt;Learning data structure this course needs to use C language, but the C disk formatting the author and DevC++ and VS studio are removed. And behind is not heavy, packaging good software, I don&amp;rsquo;t want to take this time want to C also encapsulate vscode, so start learning configuration environment, reference of this article is mainly [zhihu so-and-so article] (&lt;a href=&#34;https://zhuanlan.zhihu.com/p/15008208441&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://zhuanlan.zhihu.com/p/15008208441&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;p&gt;How to install vscode and Chinese will not be repeated, here directly start from the configuration.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

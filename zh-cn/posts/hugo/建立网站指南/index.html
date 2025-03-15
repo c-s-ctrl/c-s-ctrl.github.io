@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  网站的搭建与 Coder 模板的本地化 · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="笔者搭建自己网站并且个性化coder模版的摸索过程">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="网站的搭建与 Coder 模板的本地化">
+  <meta name="twitter:description" content="笔者搭建自己网站并且个性化coder模版的摸索过程">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="网站的搭建与 Coder 模板的本地化">
+  <meta property="og:description" content="笔者搭建自己网站并且个性化coder模版的摸索过程">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Hugo主题">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/github%E7%9A%84%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E9%A2%86coplit-pro/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/stm32/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E6%8C%87%E5%8D%97/">
+              网站的搭建与 Coder 模板的本地化
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-02-15T00:00:00Z">
+                February 15, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E9%9B%B6%E7%A2%8E%E6%8C%87%E5%8D%97/">零碎指南</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/hugo/">Hugo</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/hugo%E4%B8%BB%E9%A2%98/">Hugo主题</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>下面是笔者在搭建这个网站过程的一个记录，包括一个本地的部署以及对<a href="https://github.com/luizdepra/hugo-coder"  class="external-link" target="_blank" rel="noopener">coder模版</a>的一个个性化探索</p>
+<h1 id="前提条件">
+  前提条件
+  <a class="heading-link" href="#%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<p>首先，你必须要有一个github的账号，且在本地下载好git！</p>
+<h2 id="创建github账号">
+  创建github账号
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%bagithub%e8%b4%a6%e5%8f%b7">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>可以参考<a href="https://blog.csdn.net/m0_67906358/article/details/128808210"  class="external-link" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="下载git">
+  下载git
+  <a class="heading-link" href="#%e4%b8%8b%e8%bd%bdgit">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>参考 <a href="https://blog.csdn.net/weixin_44406127/article/details/137540031"  class="external-link" target="_blank" rel="noopener">这篇文章</a>,下载之后多个命令行都可以使用，不过笔者还是倾向于用window自带的终端运行</p>
+<h1 id="基本配置">
+  基本配置
+  <a class="heading-link" href="#%e5%9f%ba%e6%9c%ac%e9%85%8d%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="配置环境">
+  配置环境
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%ae%e7%8e%af%e5%a2%83">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>首先，我们需要下载 Hugo 并配置相关环境变量。具体步骤可以参考<a href="https://zhuanlan.zhihu.com/p/440175312"  class="external-link" target="_blank" rel="noopener">这篇文章</a>。完成后，确保在终端中运行 <code>hugo version</code> 时没有报错。
+这里建议都安装hugo的extend版本，也即<a href="https://github.com/gohugoio/hugo/releases/tag/v0.144.0"  class="external-link" target="_blank" rel="noopener">hugo官网</a>里的</p>
+<blockquote>
+<p>hugo_extended_0.144.0_windows-amd64.zip</p></blockquote>
+<p>我昨天就是卡在了这里，一直没有看到网站的效果。今天（2025.2.15）发现原因就是因为没有安装extend版本。</p>
+<h3 id="配置主题">
+  配置主题
+  <a class="heading-link" href="#%e9%85%8d%e7%bd%ae%e4%b8%bb%e9%a2%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>接着在安装好了hugo的地方使用<code>hugo new site &lt;你的本地博客文件夹名称&gt;</code>创建自己的网站根目录文件夹，我选择了 <a href="https://github.com/luizdepra/hugo-coder"  class="external-link" target="_blank" rel="noopener">hugo-coder</a> 主题。不过在抓取仓库时遇到了一些问题。运行仓库抓取命令时出现报错，询问 AI 后得知需要先初始化本地仓库。为此，我们需要运行：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span></code></pre></div><p>接着，运行以下命令来抓取主题仓库：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add https://github.com/luizdepra/hugo-coder.git themes/hugo-coder
+</span></span></code></pre></div><p>运行 <code>git submodule add</code> 命令后，Hugo 会将 <code>hugo-coder</code> 主题添加到你的项目中的 <code>themes</code> 文件夹下。
+然后运行命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></div><p>就能看到自己网站的效果了。关于如何将其部署到githubpage上，请看我另外的教程。</p>
+<h1 id="个性化模版网站">
+  个性化模版网站
+  <a class="heading-link" href="#%e4%b8%aa%e6%80%a7%e5%8c%96%e6%a8%a1%e7%89%88%e7%bd%91%e7%ab%99">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<p>Coder 这个模板真的很漂亮，我决定进一步摸索一下如何将它个性化。</p>
+<blockquote>
+<p>在下面的过程中建议大家都先试用<code>hugo server</code>命令一路开着本地预览的网站，方便看到更改的实施效果</p></blockquote>
+<p>首先，我将 <code>exampleSite</code> 目录中的文件直接复制到网站根目录，覆盖掉现有文件。通过这些步骤，我们可以顺利地完成 Hugo 网站的搭建和 Coder 模板的本地化设置。接下来，我会继续个性化设计，调整网站内容以符合自己的需求。</p>
+<h2 id="更改语言">
+  更改语言
+  <a class="heading-link" href="#%e6%9b%b4%e6%94%b9%e8%af%ad%e8%a8%80">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>大部分更改都集中在 <code>hugo.toml</code> 文件中，因此建议在开始之前安装 Even Better TOML 插件，这样会更方便查看和修改。</p>
+<p>首先要修改的就是语言配置。hugo-coder 模板默认使用葡萄牙语和英文双语，而我希望使用中文。具体步骤如下：</p>
+<h3 id="修改英文名">
+  修改英文名
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9%e8%8b%b1%e6%96%87%e5%90%8d">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>在 <code>config.toml</code> 中搜索 <code>John Doe</code>、<code>Full Stack DevOps</code> 和 <code>Magician</code>，分别是模板中的三行示例文本。将它们改成你想要的英文名（例如 Dison）以及简短介绍。</p>
+<h3 id="修改中文名">
+  修改中文名
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9%e4%b8%ad%e6%96%87%e5%90%8d">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>同样搜索 <code>João Ninguém</code>、<code>Full Stack DevOps e</code> 和 <code>Mágico</code>，将其修改为中文名称和介绍。注意，<code>Full Stack DevOps e</code> 和英文中的 <code>Full Stack DevOps</code> 会重复，因此在修改英文时也会覆盖这个部分。可以直接定位到：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">params</span><span class="p">]</span>
+</span></span></code></pre></div><p>处进行修改。</p>
+<h3 id="修改中文跳转链接">
+  修改中文跳转链接
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9%e4%b8%ad%e6%96%87%e8%b7%b3%e8%bd%ac%e9%93%be%e6%8e%a5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>修改中文跳转链接，也就是右上角about、blog、……等的中文部分以及切换按钮设置，定位到</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">pt-br</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span></code></pre></div><p>可以看到下面有葡文的跳转文字Sobre Blog Projetos Contato，首先需要将所有的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">pt-br</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span></code></pre></div><p>改成</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span></code></pre></div><p>然后改葡文为中文即可。
+最后还需要将<code>[languages.zh-cn]</code>
+下面改为<code>languageName = &quot;:cn:&quot;</code>。
+这个步骤适用于扩展更多的跳转链接以及语言。</p>
+<h3 id="写中文的相关文档">
+  写中文的相关文档
+  <a class="heading-link" href="#%e5%86%99%e4%b8%ad%e6%96%87%e7%9a%84%e7%9b%b8%e5%85%b3%e6%96%87%e6%a1%a3">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>实际上，仅仅刚刚的修改是不够的，你会发现修改完语言点进去的中文菜单中显示404，这是因为没有对应的中文文档，我们进入<code>\content</code>,会发现
+<code>about.md</code>,<code>about.pt-br.md</code>以及相应的其他文档，我们需要增加<code>about.zh-cn.md</code>文档来给予跳转目标！而对于<code>.pt-br.md</code>后缀的文档可删可不删，只是可能偶尔会跳出一些葡文链接。</p>
+<h2 id="修改头像">
+  修改头像
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9%e5%a4%b4%e5%83%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>最后，还可以通过avatarURL更改头像(其实我们甚至改网站logo，不过这一块还没来得及探索)</p>
+<h2 id="直接修改默认语言">
+  直接修改默认语言
+  <a class="heading-link" href="#%e7%9b%b4%e6%8e%a5%e4%bf%ae%e6%94%b9%e9%bb%98%e8%ae%a4%e8%af%ad%e8%a8%80">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>其实可以直接更改优先显示语言，即可将首选语言由英文变成中文。然后此时注意，如果想要写英文文章的话就要加后缀，例如有一篇文章的文件名是<code>bulid.md</code>,那他就会自动将其放在中文显示时的博客里，此时如果想要在英文博客中也有其翻译版，需要新建一个<code>bulid.en.md</code>,并在里面填写英文版本的这篇文章，这个过程需要手动完成，虽然有诸多不变，然而有更强的灵活性，比如你可以让中英文博客中显示不同的内容甚至是完全不一样的文章。</p>
+<h3 id="写作">
+  写作
+  <a class="heading-link" href="#%e5%86%99%e4%bd%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>基本上，如果熟悉markdown语法的话，就可以进行一些基本的写作啦！</p>
+<h1 id="更多功能">
+  更多功能
+  <a class="heading-link" href="#%e6%9b%b4%e5%a4%9a%e5%8a%9f%e8%83%bd">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<ol>
+<li>关于如何将博客部署到github上，请看文章：<a href="./%e5%b0%86%e7%bd%91%e7%ab%99%e9%83%a8%e7%bd%b2%e5%88%b0github%e6%8c%87%e5%8d%97.md" >将网站部署到github指南</a></li>
+<li>关于如何调整pdf嵌入设置，请看文章：<a href="./%e5%b5%8c%e5%85%a5pdf%e6%8c%87%e5%8d%97/index.md" >嵌入pdf指南</a></li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

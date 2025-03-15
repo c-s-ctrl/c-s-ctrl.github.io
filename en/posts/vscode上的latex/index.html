@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  vscode&#43;latex&#43;ai · Dison
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dison">
+<meta name="description" content="vscode&#43;latex">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="vscode&#43;latex&#43;ai">
+  <meta name="twitter:description" content="vscode&#43;latex">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+  <meta property="og:site_name" content="Dison">
+  <meta property="og:title" content="vscode&#43;latex&#43;ai">
+  <meta property="og:description" content="vscode&#43;latex">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-01T00:00:00+00:00">
+    <meta property="article:tag" content="Latex">
+    <meta property="article:tag" content="Vscode">
+    <meta property="article:tag" content="Software Configuration ">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/vscode%E9%85%8D%E7%BD%AEc%E8%AF%AD%E8%A8%80/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E6%A8%A1%E7%94%B5/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E7%94%B5%E7%A3%81%E5%AD%A6/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/latex%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E9%AB%98%E6%95%B0%E7%AC%94%E8%AE%B0/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/en/posts/yolo%E7%9A%84python%E9%83%A8%E7%BD%B2/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/en/">
+      Dison
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/en/posts/">Blog</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/zh-cn/posts/vscode%E4%B8%8A%E7%9A%84latex/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/">
+              vscode&#43;latex&#43;ai
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-03-01T00:00:00Z">
+                March 1, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/en/authors/-memory-of-frozen-water-/"> Memory of Frozen Water </a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/en/categories/piecemeal-guide-/">Piecemeal Guide </a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/en/tags/latex/">Latex</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/en/tags/vscode/">Vscode</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/en/tags/software-configuration-/">Software Configuration </a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>What this paper wants to talk about is not only the simple configuration of $\LaTeX$in vscode. After two years&rsquo; accumulation of writing $\LaTeX$, I found that &ldquo;proficient in $\LaTeX$&rdquo; is not only able to memorize some common codes, but more importantly, to make good use of various related software, plug-ins and websites, so as to make my writing and typesetting more efficient.
+However, tools are not the more the better, if a tool can achieve a variety of functions, it is actually redundant to install an additional software, I always think that in the case of similar functions to choose a plug-in is better than the use of the website, the next is to download an additional software.
+What I want to talk about below are some tools for making writing $\LaTeX$more efficient.</p>
+<h1 id="vscode">
+  vscode
+  <a class="heading-link" href="#vscode">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="configure-latex">
+  Configure $\LaTeX$
+  <a class="heading-link" href="#configure-latex">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>On how to download vscode, $\LaTeX$distribution, no more details, Zhihu or csdn can find the corresponding tutorial.
+Here&rsquo;s how to configure $\LaTeX$.</p>
+<h3 id="latextheres-nothing-wrong-with-it">
+  $\LaTeX$There&rsquo;s nothing wrong with it
+  <a class="heading-link" href="#latextheres-nothing-wrong-with-it">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Before configuration, you must determine whether $\LaTeX$has been successfully downloaded, by opening its own lightweight editor TexWork to see if running a simple tex file succeeds.</p>
+<h3 id="install-the-corresponding-plug-in-on-vscode">
+  Install the corresponding plug-in on vscode
+  <a class="heading-link" href="#install-the-corresponding-plug-in-on-vscode">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>You only need to install the LaTeX Workshop plug-in, and other relevant plug-ins are optional (the test only needs this plug-in to run successfully), or you can install it later when you have time.</p>
+<h3 id="fill-in-the-configuration-file">
+  Fill in the configuration file
+  <a class="heading-link" href="#fill-in-the-configuration-file">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Search for &lsquo;Open User settings&rsquo; at the top of vscode, select the first one that pops up here, and open the&rsquo; Settings.json &lsquo;file.
+! <a href="JSON.jpg" >alt text</a>
+If you have configured other languages with vscode before, then you should also actively or passively change this file (that is, automatically add content to the file in the background of the selection), please keep your previous content without deleting, plus the following code, if your vscode is a new download, then you can rest assured to delete everything in this file. Put directly into the code below, save, exit. (The last piece of python code does not need to be copied; it is from when I wrote python.)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.latex.tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;%DOC%&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;%DOC%&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;command&#34;</span><span class="o">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;args&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;%DOCFILE%&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.latex.recipes&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;pdflatex -&gt; bibtex -&gt; pdflatex*2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tools&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The following is what I have left behind when I configured python, so I will not delete it
+</span></span></span><span class="line"><span class="cl"><span class="c1">// // // // // // // // // // // //
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;python.defaultInterpreterPath&#34;</span><span class="o">:</span> <span class="s2">&#34;E:\\newdownloadapp\\anaconda\\python.exe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// // // // // // // // // // // // // //
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="sb">` `</span> <span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">Some details about this configuration file are described in the &#34;Personalization Change Configuration&#34; (## Personalization Change configuration) section, but please follow the guide sequence and successfully compile before making personalization adjustments
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Compile articles with two-way retrieval
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Compile article and view
+</span></span></span><span class="line"><span class="cl"><span class="sb">At this time, please open a tex file that can be correctly compiled, click the green button in the upper right corner to start compiling, at this time, the lower left corner will turn around, and when it becomes √, the compilation is successful, press the button in the upper right corner (or its shortcut key ctrl+Alt+V)(see the figure) to view the pdf, other contents please see the figure.
+</span></span></span><span class="line"><span class="cl"><span class="sb">! [alt text](pdf.png)
+</span></span></span><span class="line"><span class="cl"><span class="sb">If there is an error, click on the error prompt and see the detailed report (this is friendlier than TeXwork).
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Reverse search
+</span></span></span><span class="line"><span class="cl"><span class="sb">- In the tex section &#39;ctrl+Alt+J&#39; is a forward search
+</span></span></span><span class="line"><span class="cl"><span class="sb">- In the pdf section &#39;ctrl+ right mouse click anywhere in pdf&#39; is reverse search
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">At this point, this part is over.
+</span></span></span><span class="line"><span class="cl"><span class="sb">## Personalize the change configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">Before doing so, please ensure that vscode writing $\LaTeX$has been successfully implemented,
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Shortcut key adjustment
+</span></span></span><span class="line"><span class="cl"><span class="sb">- Lower left part of the setting, select &#39;keyboard shortcut&#39;, you can set,
+</span></span></span><span class="line"><span class="cl"><span class="sb">- What I&#39;m most concerned about here is the shortcut key for compiling $\LaTeX$. So search for &#39;LaTeX Workshop: build a LaTeX project (latex-workshop.build)&#39; and set whatever you want (because the default is crtl+alt+... This composite piece, not very convenient, I changed it to ctrl+... The form of),
+</span></span></span><span class="line"><span class="cl"><span class="sb">- Pay attention to the shortcut key conflict when adjusting, you can set some uncommon command shortcut keys to conflict, so as to give the common shortcut keys more choices.
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Adjust the compile order
+</span></span></span><span class="line"><span class="cl"><span class="sb">The so-called compile order, that is, the compilation method preferred by vscode after pressing the green triangle (or the shortcut key you just set), determines the position of each part of the configuration JSON, such as my configuration file is the configuration of xelatex on the pdflatex configuration. This also means that the green triangle is bound to the xe$\LaTeX$compiler. I mostly write Chinese documents these days, so I choose this way. Of course, I can also choose TEX on the left and manually click on other compilation methods
+</span></span></span><span class="line"><span class="cl"><span class="sb">! [alt text](sidebar.jpg).
+</span></span></span><span class="line"><span class="cl"><span class="sb">By the way, the symbol snippet without this sidebar is quite friendly for $\LaTeX$beginners, you can click on the use of Greek letters, mathematical symbols, and gradually get a more familiar feeling of $\LaTeX$(I also came to this way).
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">## Plugin
+</span></span></span><span class="line"><span class="cl"><span class="sb">As mentioned earlier, I think plug-ins are the best, so let&#39;s introduce the plug-ins and functions that vscode comes with.
+</span></span></span><span class="line"><span class="cl"><span class="sb">### pdf browser
+</span></span></span><span class="line"><span class="cl"><span class="sb">Ha ha ha, in fact, positive and negative search and pdf browsing itself is a very useful function of the plug-in, there is no need to download any additional pdf browser (some vscode configuration $\LaTeX$tutorial said to download, in fact, there is no need!)
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Sidebar
+</span></span></span><span class="line"><span class="cl"><span class="sb">It has just been mentioned, including mathematical symbols and tikz, which are very helpful for beginners to learn grammar, and as for tikz, the author generally does not use this (I will introduce the website later).
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Formula preview
+</span></span></span><span class="line"><span class="cl"><span class="sb">In fact, it is a real-time formula preview without compilation, which is suitable for users who have considerable proficiency in $\LaTeX$syntax, but are not strong in the imagination of grammar (I am also), and can view the final form of the formula in real time, so as to facilitate modification and debugging.
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">The method of use is to search &#39;&gt;LaTex Workshop: Open the Math preview panel&#39; at the top, open it, and it can be used as follows
+</span></span></span><span class="line"><span class="cl"><span class="sb">! [alt text](Formula panel.png)
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">### AI
+</span></span></span><span class="line"><span class="cl"><span class="sb">- That&#39;s a pretty powerful feature! It is new in 2025, that is, the combination of coplit and vscode, so that code can be intelligently completed (not just autofill in the sense of search).
+</span></span></span><span class="line"><span class="cl"><span class="sb">- Used in $\LaTeX$, that is, it is equivalent to an ai assistant for writing articles, which can save a lot of repetitive labor such as typing matrices, writing theorems, and speaking formulaic words. Of course, before there is no ai embedding, the code can be optimized for the webpage version of ai, but it is certainly not as convenient as coplit.
+</span></span></span><span class="line"><span class="cl"><span class="sb">- To use Copilot, download the GitHub plugin
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">## Website
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Painting (tikz)
+</span></span></span><span class="line"><span class="cl"><span class="sb">[https://tikzmaker.com/editor] (https://tikzmaker.com/editor), the site can solve most of the circuit drawing and flow chart drawing,
+</span></span></span><span class="line"><span class="cl"><span class="sb">! [alt text](tikz.png)
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Table making
+</span></span></span><span class="line"><span class="cl"><span class="sb">[https://www.latex-tables.com/](https://www.latex-tables.com/), you can import a local table or rub it directly
+</span></span></span><span class="line"><span class="cl"><span class="sb">- This table has the advantage of being able to identify merged cells, etc.
+</span></span></span><span class="line"><span class="cl"><span class="sb">- The disadvantage is that the online operation is not convenient, so it is recommended to do it in excel before importing.
+</span></span></span><span class="line"><span class="cl"><span class="sb">Of course, there are other websites, such as [https://www.tablesgenerator.com/] (https://www.tablesgenerator.com/)
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Formula edit
+</span></span></span><span class="line"><span class="cl"><span class="sb">In fact, for the skilled use of vscode plug-in is completely enough, but here is still recommended for beginners online visual hand rub formula site
+</span></span></span><span class="line"><span class="cl"><span class="sb">- https://www.latexlive.com/##
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">## Software
+</span></span></span><span class="line"><span class="cl"><span class="sb">### Excel2latex Form Converter
+</span></span></span><span class="line"><span class="cl"><span class="sb">#### Configuration
+</span></span></span><span class="line"><span class="cl"><span class="sb">- can be downloaded in [official website] (https://www.ctan.org/tex-archive/support/excel2latex/) Excel2latex this plugin (`</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">xla</span> <span class="sb">` files), method of use is to double-click to open the download content, all the way to confirm, And if you look at any excel file, you should see add-ons, click, and the two buttons inside are conversion buttons,
+</span></span></span><span class="line"><span class="cl"><span class="sb">- It is possible to double-click the conversion button again and say &#34;macro disabled&#34; because the location of the &#39;Excel2latex.xla&#39; file is not trusted. The solution is to open Excel&#39;s &#34;Trust center Settings&#34; and add the path where &#39;Excel2latex.xla&#39; is located in the trusted location. [alt text](trust.png)
+</span></span></span><span class="line"><span class="cl"><span class="sb">#### use
+</span></span></span><span class="line"><span class="cl"><span class="sb">The following does not apply to the case of merging cells, but works well for single-cell cases and is suitable for batch data tables to $\LaTeX$.
+</span></span></span><span class="line"><span class="cl"><span class="sb">! [alt text](excel2latex.png)
+</span></span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     Dison 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

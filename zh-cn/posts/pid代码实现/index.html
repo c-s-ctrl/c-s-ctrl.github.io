@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <title>
+  PID代码学习:程序移植 · 冰冻水的记忆
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="冰冻水的记忆">
+<meta name="description" content="
+  一些对软件的个性化设置
+  
+    
+    链接到标题
+  
+
+
+  与vscode的联动
+  
+    
+    链接到标题
+  
+
+笔者的vscode有内联ai，又怎么肯在$\mu$Vision中老实跟着他打代码呢，但是在编译的时候又需要借助工程，于是参考某博客,在设置中添加了自动reload外部编译器修改的设置。
+
+  繁琐步骤的精简
+  
+    
+    链接到标题
+  
+
+江协貌似每一次都要在软件里删，实际里删，然后再实际中添加，再在软件中添加。我觉得直接覆盖一遍的效果与这四部的效果是一样的
+
+  前期代码移植
+  
+    
+    链接到标题
+  
+
+移植的OLED与LED都是属于hardware。
+
+  OLED
+  
+    
+    链接到标题
+  
+
+根据视频指引，添加了更强的OLED支持工具，可以输出一些中文字符、浮点数等，
+
+  LED
+  
+    
+    链接到标题
+  
+
+需要修改一些名称，按照视频操作，可以归纳为以下几个点
+
+修改LED.c文件里面的定义，将LED1全部改成LED，接口改Pin_13,删去所有关于LED2的函数
+将LED.h文件中的LED1与LED2作相应的修改(换名与删除)
+在主文件main.c中编写测试代码，
+运行，拷入，没有问题证明移植成功。
+
+
+  按键key
+  
+    
+    链接到标题
+  
+
+
+  移植定时器(从而实现非阻塞式)
+  
+    
+    链接到标题
+  
+
+
+在system中移植定时器
+修改TIM2为TIM1(因为TIM2另有用途)
+
+
+注意这里后面改TIM1，但是前面改PB1为PB2
+
+对于高级定时器TIM2_IRQn需要查阅其定义使用更新型定时器移植过来(具体原理不懂)
+下面的测试函数则需要在Start中找结果
+测试，在main.c函数中同理编写即可
+
+
+  key
+  
+    
+    链接到标题
+  
+
+
+首先需要改pin，这里根据他的解释我终于知道改数字的依据是什么了：见视频17:30时候对引脚电路的描述，本质上是为了引脚之间关系要对得上，比如K1与K2按键对应的事stm32的pin10和pin11，因此就要将阿健进行相应的修改。
+完成所有修改之后就可以进行测试了，编写一个简单的if语句即可。
+
+
+  旋钮
+  
+    
+    链接到标题
+  
+
+这一个步骤需要用到模数转换，因此将stm32教程的模数转换部分移植过来，(之后更名为RP)
+
+在这里我有点清楚hardware和system的区别了，hardware都是外接的设备，比如按键、旋钮、LED等，而system应该是已有设备实现的一些功能，比如计数器。">
+<meta name="keywords" content="博客、个人">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PID代码学习:程序移植">
+  <meta name="twitter:description" content="一些对软件的个性化设置链接到标题与vscode的联动链接到标题笔者的vscode有内联ai，又怎么肯在$\mu$Vision中老实跟着他打代码呢，但是在编译的时候又需要借助工程，于是参考某博客,在设置中添加了自动reload外部编译器修改的设置。
+繁琐步骤的精简链接到标题江协貌似每一次都要在软件里删，实际里删，然后再实际中添加，再在软件中添加。我觉得直接覆盖一遍的效果与这四部的效果是一样的
+前期代码移植链接到标题移植的OLED与LED都是属于hardware。
+OLED链接到标题根据视频指引，添加了更强的OLED支持工具，可以输出一些中文字符、浮点数等，
+LED链接到标题需要修改一些名称，按照视频操作，可以归纳为以下几个点
+修改LED.c文件里面的定义，将LED1全部改成LED，接口改Pin_13,删去所有关于LED2的函数 将LED.h文件中的LED1与LED2作相应的修改(换名与删除) 在主文件main.c中编写测试代码， 运行，拷入，没有问题证明移植成功。 按键key链接到标题移植定时器(从而实现非阻塞式)链接到标题在system中移植定时器 修改TIM2为TIM1(因为TIM2另有用途) 注意这里后面改TIM1，但是前面改PB1为PB2
+对于高级定时器TIM2_IRQn需要查阅其定义使用更新型定时器移植过来(具体原理不懂) 下面的测试函数则需要在Start中找结果 测试，在main.c函数中同理编写即可 key链接到标题首先需要改pin，这里根据他的解释我终于知道改数字的依据是什么了：见视频17:30时候对引脚电路的描述，本质上是为了引脚之间关系要对得上，比如K1与K2按键对应的事stm32的pin10和pin11，因此就要将阿健进行相应的修改。 完成所有修改之后就可以进行测试了，编写一个简单的if语句即可。 旋钮链接到标题这一个步骤需要用到模数转换，因此将stm32教程的模数转换部分移植过来，(之后更名为RP)
+在这里我有点清楚hardware和system的区别了，hardware都是外接的设备，比如按键、旋钮、LED等，而system应该是已有设备实现的一些功能，比如计数器。">
+
+<meta property="og:url" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+  <meta property="og:site_name" content="冰冻水的记忆">
+  <meta property="og:title" content="PID代码学习:程序移植">
+  <meta property="og:description" content="一些对软件的个性化设置链接到标题与vscode的联动链接到标题笔者的vscode有内联ai，又怎么肯在$\mu$Vision中老实跟着他打代码呢，但是在编译的时候又需要借助工程，于是参考某博客,在设置中添加了自动reload外部编译器修改的设置。
+繁琐步骤的精简链接到标题江协貌似每一次都要在软件里删，实际里删，然后再实际中添加，再在软件中添加。我觉得直接覆盖一遍的效果与这四部的效果是一样的
+前期代码移植链接到标题移植的OLED与LED都是属于hardware。
+OLED链接到标题根据视频指引，添加了更强的OLED支持工具，可以输出一些中文字符、浮点数等，
+LED链接到标题需要修改一些名称，按照视频操作，可以归纳为以下几个点
+修改LED.c文件里面的定义，将LED1全部改成LED，接口改Pin_13,删去所有关于LED2的函数 将LED.h文件中的LED1与LED2作相应的修改(换名与删除) 在主文件main.c中编写测试代码， 运行，拷入，没有问题证明移植成功。 按键key链接到标题移植定时器(从而实现非阻塞式)链接到标题在system中移植定时器 修改TIM2为TIM1(因为TIM2另有用途) 注意这里后面改TIM1，但是前面改PB1为PB2
+对于高级定时器TIM2_IRQn需要查阅其定义使用更新型定时器移植过来(具体原理不懂) 下面的测试函数则需要在Start中找结果 测试，在main.c函数中同理编写即可 key链接到标题首先需要改pin，这里根据他的解释我终于知道改数字的依据是什么了：见视频17:30时候对引脚电路的描述，本质上是为了引脚之间关系要对得上，比如K1与K2按键对应的事stm32的pin10和pin11，因此就要将阿健进行相应的修改。 完成所有修改之后就可以进行测试了，编写一个简单的if语句即可。 旋钮链接到标题这一个步骤需要用到模数转换，因此将stm32教程的模数转换部分移植过来，(之后更名为RP)
+在这里我有点清楚hardware和system的区别了，hardware都是外接的设备，比如按键、旋钮、LED等，而system应该是已有设备实现的一些功能，比如计数器。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-13T00:00:00+00:00">
+    <meta property="article:tag" content="PID">
+    <meta property="article:tag" content="Stm32">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/github%E7%9A%84%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E9%A2%86coplit-pro/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/window%E5%B0%8Fbug%E7%9A%84%E5%A4%84%E7%90%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/hugo/%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/%E6%80%BB%E7%BA%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E6%80%BB%E7%BA%BF%E6%A0%87%E5%87%86/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/stm32/">
+      <meta property="og:see_also" content="https://c-s-ctrl.github.io/zh-cn/posts/pid%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">
+
+
+
+
+<link rel="canonical" href="https://c-s-ctrl.github.io/zh-cn/posts/pid%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://c-s-ctrl.github.io/zh-cn/">
+      冰冻水的记忆
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/about/">关于我</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/posts/">博客</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/">标签分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/zh-cn/tags/%e7%ac%94%e8%ae%b0">我的笔记</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://c-s-ctrl.github.io/zh-cn/posts/pid%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+              PID代码学习:程序移植
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-03-13T00:00:00Z">
+                March 13, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/zh-cn/authors/%E5%86%B0%E5%86%BB%E6%B0%B4%E7%9A%84%E8%AE%B0%E5%BF%86/">冰冻水的记忆</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/%E7%AC%94%E8%AE%B0/">笔记</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/pid/">PID</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/stm32/">Stm32</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="一些对软件的个性化设置">
+  一些对软件的个性化设置
+  <a class="heading-link" href="#%e4%b8%80%e4%ba%9b%e5%af%b9%e8%bd%af%e4%bb%b6%e7%9a%84%e4%b8%aa%e6%80%a7%e5%8c%96%e8%ae%be%e7%bd%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<h2 id="与vscode的联动">
+  与vscode的联动
+  <a class="heading-link" href="#%e4%b8%8evscode%e7%9a%84%e8%81%94%e5%8a%a8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>笔者的vscode有内联ai，又怎么肯在$\mu$Vision中老实跟着他打代码呢，但是在编译的时候又需要借助工程，于是参考<a href="https://blog.csdn.net/weixin_45295367/article/details/125395692"  class="external-link" target="_blank" rel="noopener">某博客</a>,在设置中添加了自动reload外部编译器修改的设置。</p>
+<h2 id="繁琐步骤的精简">
+  繁琐步骤的精简
+  <a class="heading-link" href="#%e7%b9%81%e7%90%90%e6%ad%a5%e9%aa%a4%e7%9a%84%e7%b2%be%e7%ae%80">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>江协貌似每一次都要在软件里删，实际里删，然后再实际中添加，再在软件中添加。我觉得直接覆盖一遍的效果与这四部的效果是一样的</p>
+<h1 id="前期代码移植">
+  前期代码移植
+  <a class="heading-link" href="#%e5%89%8d%e6%9c%9f%e4%bb%a3%e7%a0%81%e7%a7%bb%e6%a4%8d">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h1>
+<p>移植的OLED与LED都是属于hardware。</p>
+<h2 id="oled">
+  OLED
+  <a class="heading-link" href="#oled">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>根据视频指引，添加了更强的OLED支持工具，可以输出一些中文字符、浮点数等，</p>
+<h2 id="led">
+  LED
+  <a class="heading-link" href="#led">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>需要修改一些名称，按照<a href="https://www.bilibili.com/video/BV1G9zdYQEr3/?p=4&amp;spm_id_from=333.1387.top_right_bar_window_history.content.click&amp;vd_source=eca564ad7b44345c8105eebb08f088c6"  class="external-link" target="_blank" rel="noopener">视频操作</a>，可以归纳为以下几个点</p>
+<ul>
+<li>修改<code>LED.c</code>文件里面的定义，将LED1全部改成LED，接口改Pin_13,删去所有关于LED2的函数</li>
+<li>将<code>LED.h</code>文件中的LED1与LED2作相应的修改(换名与删除)</li>
+<li>在主文件<code>main.c</code>中编写测试代码，</li>
+<li>运行，拷入，没有问题证明移植成功。</li>
+</ul>
+<h2 id="按键key">
+  按键key
+  <a class="heading-link" href="#%e6%8c%89%e9%94%aekey">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<h3 id="移植定时器从而实现非阻塞式">
+  移植定时器(从而实现非阻塞式)
+  <a class="heading-link" href="#%e7%a7%bb%e6%a4%8d%e5%ae%9a%e6%97%b6%e5%99%a8%e4%bb%8e%e8%80%8c%e5%ae%9e%e7%8e%b0%e9%9d%9e%e9%98%bb%e5%a1%9e%e5%bc%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>在system中移植定时器</li>
+<li>修改TIM2为TIM1(因为TIM2另有用途)</li>
+</ul>
+<blockquote>
+<p>注意这里后面改TIM1，但是前面改PB1为PB2</p></blockquote>
+<ul>
+<li>对于高级定时器TIM2_IRQn需要查阅其定义使用更新型定时器移植过来(具体原理不懂)</li>
+<li>下面的测试函数则需要在Start中找结果</li>
+<li>测试，在main.c函数中同理编写即可</li>
+</ul>
+<h2 id="key">
+  key
+  <a class="heading-link" href="#key">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<ul>
+<li>首先需要改pin，这里根据他的解释我终于知道改数字的依据是什么了：见视频17:30时候对引脚电路的描述，本质上是为了引脚之间关系要对得上，比如K1与K2按键对应的事stm32的pin10和pin11，因此就要将阿健进行相应的修改。</li>
+<li>完成所有修改之后就可以进行测试了，编写一个简单的if语句即可。</li>
+</ul>
+<h2 id="旋钮">
+  旋钮
+  <a class="heading-link" href="#%e6%97%8b%e9%92%ae">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>这一个步骤需要用到模数转换，因此将stm32教程的模数转换部分移植过来，(之后更名为RP)</p>
+<blockquote>
+<p>在这里我有点清楚hardware和system的区别了，hardware都是外接的设备，比如按键、旋钮、LED等，而system应该是已有设备实现的一些功能，比如计数器。</p></blockquote>
+<ul>
+<li>第一步还是将.c和.h文件移植过来</li>
+</ul>
+<h3 id="更改c文件">
+  更改.c文件
+  <a class="heading-link" href="#%e6%9b%b4%e6%94%b9c%e6%96%87%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>查看引脚关系，并且这里使用ADC2来实现，而将精度更搞的ADC1留给角度传感器。</li>
+<li>通过if的选择语句判断出按的事哪一个旋钮。</li>
+</ul>
+<h3 id="更改h文件的头">
+  更改.h文件的头
+  <a class="heading-link" href="#%e6%9b%b4%e6%94%b9h%e6%96%87%e4%bb%b6%e7%9a%84%e5%a4%b4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>将名称改改就行，包括RP、n</p>
+<h3 id="在main中写测试程序">
+  在main中写测试程序
+  <a class="heading-link" href="#%e5%9c%a8main%e4%b8%ad%e5%86%99%e6%b5%8b%e8%af%95%e7%a8%8b%e5%ba%8f">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>初始化之后print出位置即可，这里根据弹幕解释一下4095的由来：$2^{12}=4096$，所以实际上这代表stm32的ADC分辨率为12位。</p>
+<h2 id="直流电机">
+  直流电机
+  <a class="heading-link" href="#%e7%9b%b4%e6%b5%81%e7%94%b5%e6%9c%ba">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h2>
+<p>首先这里的供电有变化，无需杜邦线给stm32额外供电，直接用适配器供电即可</p>
+<h3 id="查看引脚原理图">
+  查看引脚原理图
+  <a class="heading-link" href="#%e6%9f%a5%e7%9c%8b%e5%bc%95%e8%84%9a%e5%8e%9f%e7%90%86%e5%9b%be">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<p>首先还是看引脚定义表(具体看视频28:30),这部分可能有一点复杂，做一个分类：</p>
+<ul>
+<li>PWM
+<ul>
+<li>由stm32上的A0控制，</li>
+</ul>
+</li>
+<li>motor
+<ul>
+<li>相当于驱动部分了，是AIN1与2</li>
+</ul>
+</li>
+</ul>
+<h3 id="修改pwm文件">
+  修改PWM文件
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9pwm%e6%96%87%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>改按键(pin0)</li>
+<li>根据复用改通道3为1</li>
+<li>记得也要改.h</li>
+</ul>
+<h3 id="修改motor文件">
+  修改motor文件
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9motor%e6%96%87%e4%bb%b6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>改按键(pin12和13)</li>
+<li>A与B的改法</li>
+<li>改速度函数，防止误导(只是一个编程习惯)</li>
+<li>记得也要改.h</li>
+</ul>
+<h3 id="mainc的测试">
+  main.c的测试
+  <a class="heading-link" href="#mainc%e7%9a%84%e6%b5%8b%e8%af%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="链接到标题"></i>
+    <span class="sr-only">链接到标题</span>
+  </a>
+</h3>
+<ul>
+<li>需要使用直接测试按键的代码</li>
+<li>删除i，j等测试变量，添加PWM变量(发出的控制指令)</li>
+<li>设置PWM的调整关系，由于设置加速、减速以及复位，所以K4可以不需要</li>
+<li>测试
+(这里笔者出bug了，因为直接改得不细心导致的，与main.c内容无关，因此需要仔细阅读出错日志)</li>
+<li>如果想要调整方向有多种方法
+<ul>
+<li>调整set和reset</li>
+<li>引脚也可以换</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     冰冻水的记忆 
+    ·
+    
+    技术支持 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

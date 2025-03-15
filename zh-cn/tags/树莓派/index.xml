@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>树莓派 on 冰冻水的记忆</title>
+    <link>https://c-s-ctrl.github.io/zh-cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
+    <description>Recent content in 树莓派 on 冰冻水的记忆</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/zh-cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>将本地文件传到树莓派</title>
+      <link>https://c-s-ctrl.github.io/zh-cn/posts/%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E5%88%B0%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/zh-cn/posts/%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E5%88%B0%E6%A0%91%E8%8E%93%E6%B4%BE/</guid>
+      <description>&lt;p&gt;问ai果然是方便快捷的方法，ai说无需安装什么东西，直接在window命令行运行命令&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scp &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;要传输的本地文件的文件位置&amp;gt;&amp;#34;&lt;/span&gt; pi@&amp;lt;树莓派的ip&amp;gt;:/home/pi/ &lt;span class=&#34;c1&#34;&gt;#最后是要传到的位置&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;即可将进行文件传输&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>树莓派的conda</title>
+      <link>https://c-s-ctrl.github.io/zh-cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%9A%84conda/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/zh-cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%9A%84conda/</guid>
+      <description>&lt;p&gt;关于如何在树莓派上暗账minconda，笔者已经忘了，具体参考的好像是&lt;a href=&#34;https://blog.csdn.net/weixin_39589455/article/details/128620393&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;一篇博客&lt;/a&gt;。&#xA;然后笔者尝试通过ssh导入ultralytics包，结果导入是成功了，但是却检测不到环境，ai后面说是因为树莓派上安装的Python版本太低了，无法使用，没办法，看来更新树莓派上的Python是势在必行了！&#xA;在下面的操作中，笔者都是参考&lt;a href=&#34;https://blog.csdn.net/jiugeshao/article/details/122649942&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这篇文章&lt;/a&gt;进行的。&lt;/p&gt;&#xA;&lt;p&gt;好吧，发现白忙活了，装了还是不行，说是我导入的ultralytics包缺少&lt;code&gt;setup.py&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

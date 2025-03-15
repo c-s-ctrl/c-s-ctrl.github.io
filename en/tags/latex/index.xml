@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on Dison</title>
+    <link>https://c-s-ctrl.github.io/en/tags/latex/</link>
+    <description>Recent content in Latex on Dison</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://c-s-ctrl.github.io/en/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vscode&#43;latex&#43;ai</title>
+      <link>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</link>
+      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://c-s-ctrl.github.io/en/posts/vscode%E4%B8%8A%E7%9A%84latex/</guid>
+      <description>&lt;p&gt;What this paper wants to talk about is not only the simple configuration of $\LaTeX$in vscode. After two years&amp;rsquo; accumulation of writing $\LaTeX$, I found that &amp;ldquo;proficient in $\LaTeX$&amp;rdquo; is not only able to memorize some common codes, but more importantly, to make good use of various related software, plug-ins and websites, so as to make my writing and typesetting more efficient.&#xA;However, tools are not the more the better, if a tool can achieve a variety of functions, it is actually redundant to install an additional software, I always think that in the case of similar functions to choose a plug-in is better than the use of the website, the next is to download an additional software.&#xA;What I want to talk about below are some tools for making writing $\LaTeX$more efficient.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
